@@ -1,0 +1,7 @@
+<h3>Projects</h3>
+<%@projects.each do |project|%>
+  <a href="/projects/<%=project.slug%>"><%=project.name.capitalize%></a></br></br>
+<%end%>
+</br></br>
+<a href='/projects/new'>Start a New Project</a></br>
+<a href='/logout'>Logout</a>

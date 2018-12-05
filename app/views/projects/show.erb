@@ -1,0 +1,16 @@
+<h1><%=@project.name.capitalize%></h1>
+<p><%=@project.description%></p></br>
+
+<h3>Status</h3>
+<p><%=@project.status%></p></br>
+
+<h3>Room</h3>
+<p><%=@project.room.name%></p></br>
+
+<h3>Materials</h3>
+<p><%=@project.materials%></p>
+
+</br> </br>
+
+<a href='/projects/<%=@project.slug%>/edit'>Edit Project</a></br>
+<a href='projects/delete'>Delete Project</a>
