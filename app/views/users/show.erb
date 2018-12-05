@@ -1,0 +1,10 @@
+<h1>Welcome, <%=@user.name%></h1>
+
+<h3>Projects</h3>
+<%@user.projects.each do |project|%>
+  <a href="/projects/<%=project.slug%>"><%=project.name.capitalize%></a>
+<%end%>
+
+<a href='/projects/new'>Start a New Project</a>
+<a href='/logout'>Logout</a>
+
