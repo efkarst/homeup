@@ -17,7 +17,13 @@ class UserController < ApplicationController
   end
 
   get '/projects/:slug/edit' do
+    @project = Project.find_by_slug(params[:slug])
     erb :'projects/edit'
+  end
+
+  patch '/projects/:slug' do
+    #find or update room
+    #update edit params
   end
 
   
