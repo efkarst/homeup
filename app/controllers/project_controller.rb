@@ -44,5 +44,11 @@ class ProjectController < ApplicationController
     @project = Project.find_by_slug(params[:slug])
     erb :'projects/show'
   end
+  
+  delete '/projects/:slug' do
+    @project = Project.find_by_slug(params[:slug])
+    @project.destroy
+    redirect "/users/#{current_user.slug}" 
+  end
 
 end
