@@ -1,4 +1,4 @@
-class UserController < ApplicationController
+class ProjectController < ApplicationController
   get '/projects' do
     @projects = Project.all 
     erb :'projects/index'
@@ -10,6 +10,8 @@ class UserController < ApplicationController
 
   post '/projects' do
     # Add validations later that i get right data
+
+    #find or create room
     room = Room.create(name: params[:room].split('_').join(' ').capitalize, user: current_user)
     project = Project.create(name: params[:name].downcase, description: params[:description], materials: params[:materials], room: room, status: params[:status])
     #fix slug method later to handle cases in names
@@ -21,9 +23,20 @@ class UserController < ApplicationController
     erb :'projects/edit'
   end
 
+  
   patch '/projects/:slug' do
-    #find or update room
-    #update edit params
+    room_name = params[:room].split('_').join(' ').capitalize
+    if !!current_user.rooms.find_by(name: room_name) == false
+      room = Room.create(name: params[:room].split('_').join(' ').capitalize, user: current_user)
+    else
+      room = current_user.rooms.find_by(name: room_name)
+    end
+
+    project = current_user.projects.find_by_slug(params[:slug])
+    project.update(name: params[:name].downcase, description: params[:description], materials: params[:materials], room: room, status: params[:status])
+    project.save
+
+    redirect "/projects/#{project.slug}" 
   end
 
   
