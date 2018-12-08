@@ -1,5 +1,5 @@
 <%content_for :main do %>
-  <%if current_user.rooms.empty? == true%>
+  <%if @user.rooms.empty? == true%>
     <section class = "clearfix"> 
       <h1>Start a New Project</h1>
       <div class="grid clearfix">
@@ -7,7 +7,7 @@
       </div>
     </section>
   <%else%>
-    <%current_user.rooms.each do |room|%>
+    <%@user.rooms.each do |room|%>
       <section class = "clearfix"> 
         <a href = '/rooms/<%=room.slug%>'><h1><%=room.name.capitalize%></h1></a>
         <div class="grid clearfix">

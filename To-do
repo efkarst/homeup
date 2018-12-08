@@ -1,14 +1,16 @@
 - validations and re-routing if user is logged in
-- room controller and flows
-- ensure a new room is not created if one already exists
-- move singup and login into user controller or session controller
 - fix logo size and overlay
 - refactor project show view so it doesn't depend on being current users project, but just makes it so you can' tedit if it aint yours
+- ensure users cant see rooms that don't belong to them? or at least edit them
+- decide if inspiration should showcase rooms or projects
 - make edit form default to current value on drop downs
-- bathroom edit and delete paths
 - add path in header to help user navigate rooms
 - add new porject button under each room on user show page
 - make inspiration only show other people's projects
 - ensure users can't see other user's home page
 - update text formatting
 - add content to side bar
+- update tiles to show a placeholder picture with name at bottom
+- make so footer only shows up when you scroll all the way to the bottom
+- make user slugs username slugs, and check for uniqueness on sign up
+- remove room show page, and just add edit/delete to user show page

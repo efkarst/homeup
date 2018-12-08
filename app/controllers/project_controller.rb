@@ -17,8 +17,14 @@ class ProjectController < ApplicationController
   end
 
   get '/projects/:slug/edit' do
-    @project = current_user.projects.find_by_slug(params[:slug])
-    erb :'projects/edit'
+    @project = Project.find_by_slug(params[:slug])
+
+    if current_user == @project.user
+      erb :'projects/edit'
+    else
+      redirect "/projects/#{@project.slug}"
+    end
+
   end
 
   
@@ -33,7 +39,7 @@ class ProjectController < ApplicationController
 
   
   get '/projects/:slug' do
-    @project = current_user.projects.find_by_slug(params[:slug])
+    @project = Project.find_by_slug(params[:slug])
     erb :'projects/show'
   end
   

@@ -1,7 +1,10 @@
 class SessionController < ApplicationController
   get '/signup' do
-    #if user is already signed in, reroute 
-    erb :'users/signup'
+    if logged_in?
+      redirect "/users/#{current_user.slug}"
+    else
+      erb :'users/signup'
+    end
   end
 
   post '/signup' do
@@ -20,7 +23,11 @@ class SessionController < ApplicationController
   end
 
   get '/login' do
-    erb :'users/login'
+    if logged_in?
+      redirect "/users/#{current_user.slug}"
+    else
+      erb :'users/login'
+    end
   end
 
   post '/login' do 
