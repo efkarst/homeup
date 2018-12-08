@@ -1,12 +1,19 @@
+<section> 
+  <h1>Rooms</h1>
+  <div class="grid">
+    <%@user.rooms.each do |room|%>
+      <a href="/rooms/<%=room.slug%>"><%=room.name.capitalize%></a>
+    <%end%>
+  </div>
+</section>
 
-
-<h1>Welcome, <%=@user.name%></h1>
-
-<h3>Projects</h3>
-<%@user.projects.each do |project|%>
-  <a href="/projects/<%=project.slug%>"><%=project.name.capitalize%></a>
-<%end%>
+<section> 
+  <h1>Projects</h1>
+  <div class="grid">
+    <%@user.projects.each do |project|%>
+      <a href="/projects/<%=project.slug%>"><%=project.name.capitalize%></a>
+    <%end%>
+  </div>
+</section>
 
 <a href='/projects/new'>Start a New Project</a>
-<a href='/logout'>Logout</a>
-

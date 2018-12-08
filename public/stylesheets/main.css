@@ -7,12 +7,38 @@ body {
 } 
 
 .wrapper {
-  /* width: 960px; */
   margin: 0 auto;
 }
 
-.section {
-  margin: 0 0 10px;
+section {
+  margin: 30px;
+}
+
+.grid a {
+  background-color: antiquewhite;
+  padding: 10px;
+  height: 200px;
+  width: 200px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* align horizontal */
+  align-items: center; /* align vertical */
+  text-align: center;
+
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 30px 0;
+}
+
+/*////////// Text //////////*/
+h1 {
+  font-size: 2em;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 60px 0 0 0;
+
+}
+
+.link {
+  font-size: 0.5em;
 }
 
 /*////////// BACKGROUNDS //////////*/
@@ -43,8 +69,9 @@ header {
 /*////////// NAVBAR //////////*/
 
 #navbar {
+  float: left;
   top: 0;
-  left: 0;
+  left: 99;
   text-align: left;
 }
 
@@ -54,7 +81,7 @@ header {
 
 #navbar nav a {
   display: inline-block;
-  width: 12%;
+  width: 120px;
   margin: 22px 0;
   padding: px 0;
   color: darkslategray;
@@ -64,6 +91,11 @@ header {
   font: 1em "Trebuchet MS", Arial, sans-serif;
 }
 
+/*////////// USER //////////*/
+#user {
+  text-align: right;
+  padding: 22px;
+}
 
 
 /*////////// FIXES //////////*/

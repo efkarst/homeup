@@ -9,22 +9,33 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
   </head>
   <body>
+      <% if logged_in? %>
       <header>
-        <div class="grey">
+        <div class="white clearfix">
           <div class="wrapper">
             <div id="logo">
               <img src='/images/homeUp-logo.png'>
             </div> <!-- #logo -->
           </div> <!-- .wrapper -->
-          <div id="navbar" class="white">
+
+          <div id="navbar">
             <div class="wrapper">
               <nav class="clearfix">
                 <a href="/users/<%=current_user.slug%>">My Home</a><a href="/projects">Inspiration</a><a href="/shopping_list/show">Shopping List</a>
               </nav>
             </div> <!-- .wrapper -->
           </div> <!-- #navbar -->
+
+          <div id="user">
+            <div class="wrapper">
+              <%=current_user.name%></br>
+              <a href='/logout' class="link">Logout</a>
+            </div>
+          </div>
         </div> <!-- .white -->
       </header>
+
+      <%end%>
 
       <div class="wrapper clearfix grey">
         <%= yield %>
