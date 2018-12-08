@@ -5,8 +5,7 @@ if ActiveRecord::Migrator.needs_migration?
 end
 
 use Rack::MethodOverride
-use LoginController
-use SignupController
+use SessionController
 use UserController
 use RoomController
 use ProjectController
