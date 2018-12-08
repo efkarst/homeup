@@ -24,6 +24,7 @@ section {
   flex: 1 70%;
   /* float: left;
   width: 80%; */
+  border-right: 3px solid white;
 }
 
 #sidebar {
