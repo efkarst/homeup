@@ -10,9 +10,8 @@ class ProjectController < ApplicationController
 
   post '/projects' do
     # Add validations later that i get right data
-
     #find or create room
-    room = Room.create(name: params[:room].split('_').join(' ').capitalize, user: current_user)
+    room = Room.create(name: params[:room], user: current_user)
     project = Project.create(name: params[:name].downcase, description: params[:description], materials: params[:materials], room: room, status: params[:status])
     #fix slug method later to handle cases in names
     redirect "/projects/#{project.slug}"
@@ -27,7 +26,7 @@ class ProjectController < ApplicationController
   patch '/projects/:slug' do
     room_name = params[:room].split('_').join(' ').capitalize
     if !!current_user.rooms.find_by(name: room_name) == false
-      room = Room.create(name: params[:room].split('_').join(' ').capitalize, user: current_user)
+      room = Room.create(name: params[:room], user: current_user)
     else
       room = current_user.rooms.find_by(name: room_name)
     end

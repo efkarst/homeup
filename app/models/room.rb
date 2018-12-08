@@ -7,6 +7,6 @@ class Room < ActiveRecord::Base
   end
 
   def self.find_by_slug(slug)
-    self.find_by({name: slug.split("-").join(" ")})
+    self.find_by({name: slug.split("-").join(" ").capitalize})
   end
 end

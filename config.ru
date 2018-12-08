@@ -8,5 +8,6 @@ use Rack::MethodOverride
 use LoginController
 use SignupController
 use UserController
+use RoomController
 use ProjectController
 run ApplicationController
