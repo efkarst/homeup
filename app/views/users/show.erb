@@ -1,19 +1,32 @@
-<section> 
-  <h1>Rooms</h1>
-  <div class="grid">
-    <%@user.rooms.each do |room|%>
-      <a href="/rooms/<%=room.slug%>"><%=room.name.capitalize%></a>
-    <%end%>
-  </div>
-</section>
 
-<section> 
-  <h1>Projects</h1>
-  <div class="grid">
-    <%@user.projects.each do |project|%>
-      <a href="/projects/<%=project.slug%>"><%=project.name.capitalize%></a>
-    <%end%>
-  </div>
-</section>
 
-<a href='/projects/new'>Start a New Project</a>
+<h1>My main content</h1>
+<p>Bacon ipsum…<p>
+
+<%content_for :main do %>
+  <section class = "clearfix"> 
+    <h1>Rooms</h1>
+    <div class="grid clearfix">
+      <%@user.rooms.each do |room|%>
+        <a href="/rooms/<%=room.slug%>"><%=room.name.capitalize%></a>
+      <%end%>
+    </div>
+  </section>
+
+  <section class = "clearfix"> 
+    <h1>Projects</h1>
+    <div class="grid clearfix">
+      <%@user.projects.each do |project|%>
+        <a href="/projects/<%=project.slug%>"><%=project.name.capitalize%></a>
+      <%end%>
+    </div>
+  </section>
+
+  <a href='/projects/new'>Start a New Project</a>
+<%end%>
+
+<%content_for :sidebar do%>
+  <section>
+    <h1>Sidebar</h1>
+  </section>
+<%end%>

@@ -21,7 +21,7 @@
           <div id="navbar">
             <div class="wrapper">
               <nav class="clearfix">
-                <a href="/users/<%=current_user.slug%>">My Home</a><a href="/projects">Inspiration</a><a href="/shopping_list/show">Shopping List</a>
+                <a href="/users/<%=current_user.slug%>">My Home</a><a href="/projects/new">New Project</a><a href="/projects">Inspiration</a>
               </nav>
             </div> <!-- .wrapper -->
           </div> <!-- #navbar -->
@@ -37,8 +37,13 @@
 
       <%end%>
 
-      <div class="wrapper clearfix grey">
-        <%= yield %>
+      <div class="wrapper clearfix grey" id="page-body">
+        <div id="main">
+          <%= yield_content :main%>
+        </div>
+        <div id="sidebar" class = "white">
+          <%= yield_content :sidebar%>
+        </div>
       </div>
 
     <footer class="branding">

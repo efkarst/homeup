@@ -14,26 +14,49 @@ section {
   margin: 30px;
 }
 
-.grid a {
-  background-color: antiquewhite;
-  padding: 10px;
-  height: 200px;
-  width: 200px;
+#page-body {
+  display: flex;
+  flex: 1;
+  align-items: stretch;
+}
+
+#main {
+  flex: 1 70%;
+  /* float: left;
+  width: 80%; */
+}
+
+#sidebar {
+  flex: 1 30%;
+  padding-right: 30px;
+}
+
+/*////////// Grid //////////*/
+
+.grid {
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
+}
+
+.grid a {
+  background-color: white;
+  padding: 30px;
+  height: 180px;
+  width: 180px;
+  display: flex;
   justify-content: center; /* align horizontal */
   align-items: center; /* align vertical */
   text-align: center;
-
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin: 30px 0;
+  margin: 30px 30px 0 0; 
 }
 
 /*////////// Text //////////*/
 h1 {
   font-size: 2em;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin: 60px 0 0 0;
+  margin: 40px 0 0 0;
 
 }
 
@@ -54,7 +77,7 @@ h1 {
 /*////////// HEADER //////////*/
 
 header {
-  margin: 0 0 30px;
+  margin: 0px;
 }
 
 /*////////// LOGO //////////*/

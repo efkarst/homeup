@@ -1,0 +1,3 @@
+- validations and re-routing if user is logged in
+- room controller and flows
+- move singup and login into user controller or session controller
