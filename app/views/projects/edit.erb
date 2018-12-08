@@ -1,23 +1,34 @@
-<h1>Edit <%=@project.name%></h1>
+<%content_for :main do %>
+  <section class="clearfix">
+    <h1>Edit <%=@project.name%></h1>
 
-<form action="/projects/<%=@project.slug%>" method="POST" id='edit_project'>
-  <input id="hidden" type="hidden" name="_method" value="patch">  
-  Project Name: <input type='text' name='name' value='<%=@project.name%>'></br>
-  Description: <input type='text' name='description'value='<%=@project.description%>'></br>
-  Materials: <input type='text' name='materials' value='<%=@project.materials%>'></br>
-  Add to a Room: <select name='room' form='edit_project'>
-    <option value='living_room'>Living Room</option>
-    <option value='bedroom'>Bedroom</option>
-    <option value='bathroom'>Bathroom</option>
-    <option value='kitchen'>Kitchen</option>
-    <option value='basement'>Basement</option>
-  </select></br>
-  
-  Project Status: <select name='status' form='edit_project'>
-    <option value='not_started'>Not Started</option>
-    <option value='in_progress'>In Progress</option>
-    <option value='complete'>Complete</option>
-  </select></br>
-  <input type='submit' value='Update Project'>
-</form>
+    <div class = "form clearfix">
+      <form action="/projects/<%=@project.slug%>" method="POST" id='edit_project'>
+        <input id="hidden" type="hidden" name="_method" value="patch">  
+        Project Name: <input type='text' name='name' value='<%=@project.name%>'></br>
+        Description: <input type='text' name='description'value='<%=@project.description%>'></br>
+        Materials: <input type='text' name='materials' value='<%=@project.materials%>'></br>
+        Add to a Room: <select name='room' form='edit_project'>
+          <option value='living_room'>Living Room</option>
+          <option value='bedroom'>Bedroom</option>
+          <option value='bathroom'>Bathroom</option>
+          <option value='kitchen'>Kitchen</option>
+          <option value='basement'>Basement</option>
+        </select></br>
+        
+        Project Status: <select name='status' form='edit_project'>
+          <option value='not_started'>Not Started</option>
+          <option value='in_progress'>In Progress</option>
+          <option value='complete'>Complete</option>
+        </select></br>
+        <input type='submit' value='Update Project'>
+      </form>
+    </div>
+  </section>
+<%end%>
 
+<%content_for :sidebar do%>
+  <section>
+    <h1>Sidebar</h1>
+  </section>
+<%end%>

@@ -1,7 +1,9 @@
-<h3>Projects</h3>
-<%@projects.each do |project|%>
-  <a href="/projects/<%=project.slug%>"><%=project.name.capitalize%></a></br></br>
+<%content_for :main do %>
+  <section class="clearfix">
+    <h1>Completed Projects</h1>
+    <div class = "grid clearfix">
+      <%@projects.each do |project|%>
+        <a href="/projects/<%=project.slug%>"><%=project.name.capitalize%></a></br></br>
+      <%end%>
+    </div>
 <%end%>
-</br></br>
-<a href='/projects/new'>Start a New Project</a></br>
-<a href='/logout'>Logout</a>

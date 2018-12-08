@@ -1,3 +1,5 @@
 - validations and re-routing if user is logged in
 - room controller and flows
+- ensure a new room is not created if one already exists
 - move singup and login into user controller or session controller
+- fix logo size and overlay

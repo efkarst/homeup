@@ -31,7 +31,6 @@ class ProjectController < ApplicationController
     else
       room = current_user.rooms.find_by(name: room_name)
     end
-
     project = current_user.projects.find_by_slug(params[:slug])
     project.update(name: params[:name].downcase, description: params[:description], materials: params[:materials], room: room, status: params[:status])
     project.save

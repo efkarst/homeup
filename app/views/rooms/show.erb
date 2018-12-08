@@ -1,0 +1,16 @@
+<%content_for :main do %>
+  <section class = "clearfix"> 
+    <h1>Projects</h1>
+    <div class="grid clearfix">
+      <%@room.projects.each do |project|%>
+        <a href="/projects/<%=project.slug%>"><%=project.name.capitalize%></a>
+      <%end%>
+    </div>
+  </section>
+<%end%>
+
+<%content_for :sidebar do%>
+  <section>
+    <h1>Sidebar</h1>
+  </section>
+<%end%>
