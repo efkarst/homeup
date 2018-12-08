@@ -1,12 +1,10 @@
-<div class="container">
-    <div class="col-md-8 col-md-offset-2">
-    <h2>homeUp</h2>
-
-    <div class="content">
-      <p>enter description of homeUp here</div>
-      <a href='/login'>Log In</a>
-      </br>
-
-      <a href='/signup'>Sign Up</a>
-  </div>
-</div>
+<%content_for :main do %>
+  <section class="clearfix">
+    <h1>homeUp</h1>
+    <p>enter description of homeUp here</p>
+    <div class="buttons">
+      <a class = 'button' href='/login'>Log In</a> </br> </br>
+      <a class = 'button' href='/signup'>Sign Up</a>
+    </div>
+  </section>
+<%end%>

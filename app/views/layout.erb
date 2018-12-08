@@ -10,41 +10,45 @@
   </head>
   <body>
       <% if logged_in? %>
-      <header>
-        <div class="white clearfix">
-          <div class="wrapper">
-            <div id="logo">
-              <img src='/images/homeUp-logo.png'>
-            </div> <!-- #logo -->
-          </div> <!-- .wrapper -->
-
-          <div id="navbar">
+        <header>
+          <div class="white clearfix">
             <div class="wrapper">
-              <nav class="clearfix">
-                <a href="/users/<%=current_user.slug%>">My Home</a><a href="/projects/new">New Project</a><a href="/projects">Inspiration</a>
-              </nav>
+              <div id="logo">
+                <img src='/images/homeUp-logo.png'>
+              </div> <!-- #logo -->
             </div> <!-- .wrapper -->
-          </div> <!-- #navbar -->
 
-          <div id="user">
-            <div class="wrapper">
-              <%=current_user.name%></br>
-              <a href='/logout' class="link">Logout</a>
+            <div id="navbar">
+              <div class="wrapper">
+                <nav class="clearfix">
+                  <a href="/users/<%=current_user.slug%>">My Home</a><a href="/projects/new">New Project</a><a href="/projects">Inspiration</a>
+                </nav>
+              </div> <!-- .wrapper -->
+            </div> <!-- #navbar -->
+
+            <div id="user">
+              <div class="wrapper">
+                <%=current_user.name%></br>
+                <a href='/logout' class="link">Logout</a>
+              </div>
             </div>
+          </div> <!-- .white -->
+        </header>
+
+        <div class="wrapper grey clearfix" id="page-body">
+          <div id="main">
+            <%= yield_content :main%>
           </div>
-        </div> <!-- .white -->
-      </header>
+          <div id="sidebar">
+            <%= yield_content :sidebar%>
+          </div>
+        </div>
 
+      <%else%>
+        <div class="wrapper grey clearfix welcome-pages">
+         <%= yield_content :main%>
+        </div>
       <%end%>
-
-      <div class="wrapper grey clearfix" id="page-body">
-        <div id="main">
-          <%= yield_content :main%>
-        </div>
-        <div id="sidebar">
-          <%= yield_content :sidebar%>
-        </div>
-      </div>
 
     <footer class="branding">
       <small>&copy; 2018 <strong>homeUp</strong></small>

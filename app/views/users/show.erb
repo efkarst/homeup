@@ -4,14 +4,16 @@
 <p>Bacon ipsum…<p>
 
 <%content_for :main do %>
-  <section class = "clearfix"> 
-    <h1>Rooms</h1>
-    <div class="grid clearfix">
-      <%@user.rooms.each do |room|%>
-        <a href="/rooms/<%=room.slug%>"><%=room.name.capitalize%></a>
-      <%end%>
-    </div>
-  </section>
+  <%if current_user.rooms.empty? == false%>
+    <section class = "clearfix"> 
+      <h1>Rooms</h1>
+      <div class="grid clearfix">
+        <%@user.rooms.each do |room|%>
+          <a href="/rooms/<%=room.slug%>"><%=room.name.capitalize%></a>
+        <%end%>
+      </div>
+    </section>
+  <%end%>
 
   <section class = "clearfix"> 
     <h1>Projects</h1>

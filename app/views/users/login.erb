@@ -1,7 +1,13 @@
-<h1>homeUp Login</h1>
+<%content_for :main do %>
+  <section class = "clearfix"> 
+    <h1>homeUp Login</h1>
 
-<form method='POST' action='/login'>
-Username: <input type="text" name="username" placeholder="username">
-Password: <input type="password" name="password" placeholder="password">
-<input type="submit" value="Log In">
-</form>
+    <div class = "form clearfix">
+      <form method='POST' action='/login'>
+      Username: <input type="text" name="username" placeholder="username">
+      Password: <input type="password" name="password" placeholder="password">
+      <input type="submit" value="Log In">
+      </form>
+    </div>
+  </section>
+<%end%>

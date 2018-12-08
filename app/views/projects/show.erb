@@ -1,20 +1,36 @@
-<h1><%=@project.name.capitalize%></h1>
-<p><%=@project.description%></p></br>
+<%content_for :main do %>
+  <%if current_user.rooms.empty? == false%>
+    <section class = "clearfix"> 
+      <div class='page-title'>
+        <h1><%=@project.name.capitalize%></h1>
+        <a class="button" href='/projects/<%=@project.slug%>/edit'>Edit</a>
+        <form class = "button" action="/projects/<%=@project.slug%>" method="POST">
+          <input id="hidden" type="hidden" name="_method" value="delete">  
+          <input type='submit' value='Delete'>
+        </form>
+      </div>
+     <p><%=@project.description%></p></br>
 
-<h3>Status</h3>
-<p><%=@project.status%></p></br>
+      <h3>Status</h3>
+      <p><%=@project.status%></p></br>
 
-<h3>Room</h3>
-<p><%=@project.room.name%></p></br>
+      <h3>Room</h3>
+      <p><%=@project.room.name%></p></br>
 
-<h3>Materials</h3>
-<p><%=@project.materials%></p>
+      <h3>Materials</h3>
+      <p><%=@project.materials%></p>
+    </section>
 
-</br> </br>
 
-<a href='/projects/<%=@project.slug%>/edit'>Edit Project</a></br>
+  <%end%>
 
-<form action="/projects/<%=@project.slug%>" method="POST">
-  <input id="hidden" type="hidden" name="_method" value="delete">  
-  <input type='submit' value='Delete Project'>
-</form>
+
+
+
+<%end%>
+
+<%content_for :sidebar do%>
+  <section>
+    <h1>Sidebar</h1>
+  </section>
+<%end%>

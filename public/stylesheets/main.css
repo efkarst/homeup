@@ -14,11 +14,31 @@ section {
   margin: 30px;
 }
 
+.welcome-pages {
+  position: absolute;
+  top: 10%;
+  left: 33%; 
+}
+
 #page-body {
   display: flex;
   flex: 1;
   align-items: stretch;
 }
+
+.page-title {
+  display: flex;
+  align-items: flex-start; /* align vertical */
+  text-align: center;
+  padding: 40px 120px 0px 0px;
+}
+
+
+.page-title h1 {
+  margin: 0;
+  padding: 0 30px 0 0;
+}
+
 
 #main {
   flex: 1 70%;
@@ -36,6 +56,9 @@ footer {
   padding: 10px;
   text-align: center;
   background: white;
+  width: 100%;
+  position: fixed;
+  bottom: 0%;
 }
 
 /*////////// Grid //////////*/
@@ -70,6 +93,41 @@ h1 {
 .link {
   font-size: 0.5em;
 }
+
+.buttons {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.button {
+  background: white;
+  display: flex;
+  justify-content: center; /* align horizontal */
+  align-items: center; /* align vertical */
+  text-align: center;
+  padding: 10px;
+  width: 120 px; 
+  height: 30px;
+  margin: 0 20px 0 0; 
+  border-color: darkgray;
+}
+
+
+/*////////// Forms //////////*/
+.form {
+  display: table;
+  padding: 30px 0;
+  /* display: block;
+  width:200px;
+  margin:2px 0 20px 10px; */
+
+  /* padding:4px 2px; */
+  width:70px;
+  display: block;
+}
+
+
 
 /*////////// BACKGROUNDS //////////*/
 .white {
