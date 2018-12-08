@@ -3,5 +3,4 @@
 - ensure a new room is not created if one already exists
 - move singup and login into user controller or session controller
 - fix logo size and overlay
-- rooms contain projects by multiple users
 - refactor project show view so it doesn't depend on being current users project, but just makes it so you can' tedit if it aint yours
