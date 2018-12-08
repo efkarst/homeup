@@ -1,7 +1,4 @@
-- next paths where appropriate
 - fix logo size and overlay
-- refactor project show view so it doesn't depend on being current users project, but just makes it so you can' tedit if it aint yours
-- ensure users cant see rooms that don't belong to them? or at least edit them
 - decide if inspiration should showcase rooms or projects
 - make edit form default to current value on drop downs
 - add path in header to help user navigate rooms
