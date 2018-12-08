@@ -32,6 +32,12 @@ section {
   padding-right: 30px;
 }
 
+footer {
+  padding: 10px;
+  text-align: center;
+  background: white;
+}
+
 /*////////// Grid //////////*/
 
 .grid {
