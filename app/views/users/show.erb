@@ -1,23 +1,23 @@
 <%content_for :main do %>
-  <%if current_user.rooms.empty? == false%>
+  <%if current_user.rooms.empty? == true%>
     <section class = "clearfix"> 
-      <h1>Rooms</h1>
+      <h1>Start a New Project</h1>
       <div class="grid clearfix">
-        <%@user.rooms.each do |room|%>
-          <a href="/rooms/<%=room.slug%>"><%=room.name.capitalize%></a>
-        <%end%>
+        <a href="/projects/new">+ New Project</a>
       </div>
     </section>
+  <%else%>
+    <%current_user.rooms.each do |room|%>
+      <section class = "clearfix"> 
+        <h1><%=room.name.capitalize%></h1>
+        <div class="grid clearfix">
+          <%room.projects.each do |project|%>
+            <a href="/projects/<%=project.slug%>"><%=project.name.capitalize%></a>
+          <%end%>
+        </div>
+      </section>
+    <%end%>
   <%end%>
-
-  <section class = "clearfix"> 
-    <h1>Projects</h1>
-    <div class="grid clearfix">
-      <%@user.projects.each do |project|%>
-        <a href="/projects/<%=project.slug%>"><%=project.name.capitalize%></a>
-      <%end%>
-    </div>
-  </section>
 <%end%>
 
 <%content_for :sidebar do%>
