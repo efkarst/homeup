@@ -4,8 +4,8 @@
       <h1><%=@room.name.capitalize%></h1>
 
       <%if current_user == @room.user%>
-        <a href='/rooms/<%=@room.slug%>/edit'><img src='/images/edit-icon.png' alt="Edit Room"></a>
-        <form action="/rooms/<%=@room.slug%>" method="POST">
+        <a href='/users/<%=@room.user.slug%>/rooms/<%=@room.slug%>/edit'><img src='/images/edit-icon.png' alt="Edit Room"></a>
+        <form action="/users/<%=@room.user.slug%>/rooms/<%=@room.slug%>" method="POST">
           <input id="hidden" type="hidden" name="_method" value="delete">  
           <input type='image' src="/images/delete-icon.png" alt = "Delete Project" class="fsSubmitButton">
         </form>
@@ -13,7 +13,7 @@
     </div>
     <div class="grid clearfix">
       <%@room.projects.each do |project|%>
-        <a href="/projects/<%=project.slug%>"><%=project.name.capitalize%></a>
+        <a href="/users/<%=project.user.slug%>/projects/<%=project.slug%>"><%=project.name.capitalize%></a>
       <%end%>
     </div>
   </section>

@@ -10,6 +10,8 @@ class SessionController < ApplicationController
   post '/signup' do
     user = User.new(name: params[:name], username: params[:username], password: params[:password])
 
+    #add logic to ensure username is unique and surface needed messaging
+
     if user.name == "" || user.username == "" || user.password == nil
       redirect '/signup'
     elsif user.save

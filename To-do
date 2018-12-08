@@ -1,4 +1,4 @@
-- validations and re-routing if user is logged in
+- next paths where appropriate
 - fix logo size and overlay
 - refactor project show view so it doesn't depend on being current users project, but just makes it so you can' tedit if it aint yours
 - ensure users cant see rooms that don't belong to them? or at least edit them
@@ -14,3 +14,10 @@
 - make so footer only shows up when you scroll all the way to the bottom
 - make user slugs username slugs, and check for uniqueness on sign up
 - remove room show page, and just add edit/delete to user show page
+- room drop down needs to show rooms the user created
+- can i use memoization to not load data 50 times?
+
+
+
+Questions
+- nested paths -- what's the best convention?

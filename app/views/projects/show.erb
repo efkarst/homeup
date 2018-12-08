@@ -3,8 +3,8 @@
       <div class='section-title'>
         <h1><%=@project.name.capitalize%></h1>
         <%if current_user == @project.user %>
-          <a href='/projects/<%=@project.slug%>/edit'><img src='/images/edit-icon.png' alt="Edit Project"></a>
-          <form action="/projects/<%=@project.slug%>" method="POST">
+          <a href='/users/<%=@project.user.slug%>/projects/<%=@project.slug%>/edit'><img src='/images/edit-icon.png' alt="Edit Project"></a>
+          <form action="/users/<%=@project.user.slug%>/projects/<%=@project.slug%>" method="POST">
             <input id="hidden" type="hidden" name="_method" value="delete">  
             <input type='image' src="/images/delete-icon.png" alt = "Delete Project" class="fsSubmitButton">
           </form>

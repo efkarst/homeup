@@ -3,7 +3,7 @@
     <h1>Edit <%=@project.name%></h1>
 
     <div class = "form clearfix">
-      <form action="/projects/<%=@project.slug%>" method="POST" id='edit_project'>
+      <form action="/users/<%=@project.user.slug%>/projects/<%=@project.slug%>" method="POST" id='edit_project'>
         <input id="hidden" type="hidden" name="_method" value="patch">  
         Project Name: <input type='text' name='name' value='<%=@project.name%>'></br>
         Description: <input type='text' name='description'value='<%=@project.description%>'></br>
