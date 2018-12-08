@@ -4,7 +4,7 @@ class Project < ActiveRecord::Base
   belongs_to :shopping_list
 
   def slug
-    self.name.downcase.split(" ").join("-")
+    self.name.split(" ").join("-")
   end
 
   def self.find_by_slug(slug)

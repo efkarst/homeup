@@ -3,10 +3,10 @@ class Room < ActiveRecord::Base
   has_many :projects
 
   def slug
-    self.name.downcase.split(" ").join("-")
+    self.name.split(" ").join("-")
   end
 
   def self.find_by_slug(slug)
-    self.find_by({name: slug.split("-").join(" ").capitalize})
+    self.find_by({name: slug.split("-").join(" ")})
   end
 end

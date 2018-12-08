@@ -9,11 +9,10 @@ class ProjectController < ApplicationController
   end
 
   post '/projects' do
-    # Add validations later that i get right data
-    #find or create room
-    room = Room.create(name: params[:room], user: current_user)
+    # Add validations later that i get right data & names don't include symbols
+    # validate project name doesnt already exist
+    room = current_user.rooms.find_or_create_by(name: params[:room].downcase, user: current_user)
     project = Project.create(name: params[:name].downcase, description: params[:description], materials: params[:materials], room: room, status: params[:status])
-    #fix slug method later to handle cases in names
     redirect "/projects/#{project.slug}"
   end
 
@@ -24,13 +23,8 @@ class ProjectController < ApplicationController
 
   
   patch '/projects/:slug' do
-    room_name = params[:room].split('_').join(' ').capitalize
-    if !!current_user.rooms.find_by(name: room_name) == false
-      room = Room.create(name: params[:room], user: current_user)
-    else
-      room = current_user.rooms.find_by(name: room_name)
-    end
     project = current_user.projects.find_by_slug(params[:slug])
+    room = current_user.rooms.find_or_create_by(name: params[:room].downcase, user: current_user)
     project.update(name: params[:name].downcase, description: params[:description], materials: params[:materials], room: room, status: params[:status])
     project.save
 
@@ -39,7 +33,7 @@ class ProjectController < ApplicationController
 
   
   get '/projects/:slug' do
-    @project = Project.find_by_slug(params[:slug])
+    @project = current_user.projects.find_by_slug(params[:slug])
     erb :'projects/show'
   end
   
