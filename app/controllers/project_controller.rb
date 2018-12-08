@@ -11,7 +11,8 @@ class ProjectController < ApplicationController
   post '/projects' do
     # Add validations later that i get right data & names don't include symbols
     # validate project name doesnt already exist to ensure uniqueness
-    room = current_user.rooms.find_or_create_by(name: params[:room].downcase, user: current_user)
+    (!!params[:new_room] && params[:new_room] != "") ? room_name = params[:new_room] : room_name = params[:room] 
+    room = current_user.rooms.find_or_create_by(name: room_name.downcase, user: current_user)
     project = Project.create(name: params[:name].downcase, description: params[:description], materials: params[:materials], room: room, status: params[:status])
     redirect "/users/#{project.user.slug}/projects/#{project.slug}"
   end
@@ -34,7 +35,8 @@ class ProjectController < ApplicationController
 
   patch '/users/:user_slug/projects/:project_slug' do
     @project = User.find_by_slug(params[:user_slug]).projects.find_by_slug(params[:project_slug])
-    room = @project.user.rooms.find_or_create_by(name: params[:room].downcase, user: current_user)
+    (!!params[:new_room] && params[:new_room] != "") ? room_name = params[:new_room] : room_name = params[:room] 
+    room = @project.user.rooms.find_or_create_by(name: room_name.downcase, user: current_user)
     @project.update(name: params[:name].downcase, description: params[:description], materials: params[:materials], room: room, status: params[:status])
     @project.save
 
