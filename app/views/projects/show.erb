@@ -1,12 +1,12 @@
 <%content_for :main do %>
   <%if current_user.rooms.empty? == false%>
     <section class = "clearfix"> 
-      <div class='page-title'>
+      <div class='section-title'>
         <h1><%=@project.name.capitalize%></h1>
-        <a class="button" href='/projects/<%=@project.slug%>/edit'>Edit</a>
-        <form class = "button" action="/projects/<%=@project.slug%>" method="POST">
+        <a href='/projects/<%=@project.slug%>/edit'><img src='/images/edit-icon.png' alt="Edit Project"></a>
+        <form action="/projects/<%=@project.slug%>" method="POST">
           <input id="hidden" type="hidden" name="_method" value="delete">  
-          <input type='submit' value='Delete'>
+          <input type='image' src="/images/delete-icon.png" alt = "Delete Project" class="fsSubmitButton">
         </form>
       </div>
      <p><%=@project.description%></p></br>

@@ -9,7 +9,7 @@
   <%else%>
     <%current_user.rooms.each do |room|%>
       <section class = "clearfix"> 
-        <h1><%=room.name.capitalize%></h1>
+        <a href = '/rooms/<%=room.slug%>'><h1><%=room.name.capitalize%></h1></a>
         <div class="grid clearfix">
           <%room.projects.each do |project|%>
             <a href="/projects/<%=project.slug%>"><%=project.name.capitalize%></a>

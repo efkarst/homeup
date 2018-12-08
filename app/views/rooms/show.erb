@@ -1,6 +1,13 @@
 <%content_for :main do %>
   <section class = "clearfix"> 
-    <h1>Projects</h1>
+    <div class='section-title'>
+      <h1><%=@room.name.capitalize%></h1>
+      <a href='/rooms/<%=@room.slug%>/edit'><img src='/images/edit-icon.png' alt="Edit Room"></a>
+      <form action="/rooms/<%=@room.slug%>" method="POST">
+        <input id="hidden" type="hidden" name="_method" value="delete">  
+        <input type='image' src="/images/delete-icon.png" alt = "Delete Project" class="fsSubmitButton">
+      </form>
+    </div>
     <div class="grid clearfix">
       <%@room.projects.each do |project|%>
         <a href="/projects/<%=project.slug%>"><%=project.name.capitalize%></a>
@@ -14,3 +21,5 @@
     <h1>Sidebar</h1>
   </section>
 <%end%>
+
+

@@ -4,3 +4,7 @@
 - move singup and login into user controller or session controller
 - fix logo size and overlay
 - refactor project show view so it doesn't depend on being current users project, but just makes it so you can' tedit if it aint yours
+- make edit form default to current value on drop downs
+- bathroom edit and delete paths
+- add path in header to help user navigate rooms
+- add new porject button under each room on user show page
