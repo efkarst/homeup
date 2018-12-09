@@ -122,6 +122,13 @@ h4 a {
   color: rgb(130,130,130);
 }
 
+.flash {
+  font-family: "Heebo", sans-serif;
+  color: rgb(175, 7, 7);
+  padding: 20px 0 0 0;
+
+}
+
 .link {
   font-size: 0.5em;
 }

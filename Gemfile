@@ -11,9 +11,8 @@ gem 'shotgun'
 gem 'pry'
 gem 'bcrypt'
 gem "tux"
-gem 'sinatra-content-for2'
-gem 'sinatra-content-for'
 gem 'sinatra-contrib'
+gem 'sinatra-flash'
 
 group :test do
   gem 'rspec'

@@ -2,6 +2,12 @@
   <section class="clearfix">
     <h1>Edit <%=@room.name.capitalize%></h1>
 
+    <%if !!flash[:room]%>
+    <div class="flash wrapper clearfix">
+      <%=flash[:room]%>
+    </div>
+    <%end%>
+
     <div class = "form clearfix">
       <form action="/users/<%=@room.user.slug%>/rooms/<%=@room.slug%>" method="POST">
         <input id="hidden" type="hidden" name="_method" value="patch">  

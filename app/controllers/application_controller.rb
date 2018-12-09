@@ -1,8 +1,9 @@
 require './config/environment'
-
+require 'sinatra/flash'
 
 class ApplicationController < Sinatra::Base
   helpers Sinatra::ContentFor
+  register Sinatra::Flash
 
   configure do
     set :public_folder, 'public'
