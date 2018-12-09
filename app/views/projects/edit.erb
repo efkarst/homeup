@@ -18,11 +18,22 @@
           <%end%>
         <%end%> </br>
         
-        Project Status: <select name='status' form='edit_project'>
-          <option value='Not Started'>Not Started</option>
-          <option value='In Progress'>In Progress</option>
-          <option value='Complete'>Complete</option>
-        </select></br>
+        Project Status: </br>
+        <%if @project.status == "Not started"%>
+          <input type = 'radio' name='status' value = 'Not started' id = 'Not started' checked>Not Started</br>
+          <input type = 'radio' name='status' value = 'In progress' id = 'In progress'>In Progress</br>
+          <input type = 'radio' name='status' value = 'Complete' id = 'Complete'>Complete</br>
+        <%elsif @project.status == "In progress"%>
+          <input type = 'radio' name='status' value = 'Not started' id = 'Not started'>Not Started</br>
+          <input type = 'radio' name='status' value = 'In progress' id = 'In progress' checked>In Progress</br>
+          <input type = 'radio' name='status' value = 'Complete' id = 'Complete'>Complete</br>
+        <%else%>
+          <input type = 'radio' name='status' value = 'Not started' id = 'Not started'>Not Started</br>
+          <input type = 'radio' name='status' value = 'In progress' id = 'In progress'>In Progress</br>
+          <input type = 'radio' name='status' value = 'Complete' id = 'Complete' checked>Complete</br>
+        <%end%>
+        
+        </br></br>
         <input type='submit' value='Update Project'>
       </form>
     </div>
