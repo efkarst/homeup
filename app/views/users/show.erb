@@ -1,4 +1,9 @@
 <%content_for :main do %>
+
+  <div id="subheader">
+    <h4><a href="/users/<%=@user.slug%>"><%=@user.name.capitalize%>'s Home</a></h4>
+  </div> <!--subheader-->
+
   <%if @user.rooms.empty? == true%>
     <section class = "clearfix"> 
       <h1>Start a New Project</h1>

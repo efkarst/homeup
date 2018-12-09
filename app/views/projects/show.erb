@@ -1,4 +1,9 @@
 <%content_for :main do %>
+
+    <div id="subheader">
+      <h4><a href="/users/<%=@project.user.slug%>"><%=@project.user.name.capitalize%>'s Home</a> &nbsp;>&nbsp; <a href="/users/<%=@project.user.slug%>/rooms/<%=@project.room.slug%>"><%=@project.room.name.capitalize%></a> &nbsp;>&nbsp; <a href="/users/<%=@project.user.slug%>/projects/<%=@project.slug%>"><%=@project.name.capitalize%></a></h4>
+    </div> <!--subheader-->
+
     <section class = "clearfix"> 
       <div class='section-title'>
         <h1><%=@project.name.capitalize%></h1>
