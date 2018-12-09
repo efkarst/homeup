@@ -1,14 +1,8 @@
 - when editin a room name, ensure that you use find or create
 - check for username uniqueness on sign-up
-- remove room show page, and just add edit/delete to user show page
-- add path in header to help user navigate rooms
 - add new project button under each room on user show page
 - can i use memoization to not load data 50 times?
-
-- update text formatting
-- fix logo size and overlay
 - add content to side bar
-- update tiles to show a placeholder picture with name at bottom
 - format forms
 
 
