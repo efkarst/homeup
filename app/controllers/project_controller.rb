@@ -36,6 +36,7 @@ class ProjectController < ApplicationController
     @project = User.find_by_slug(params[:user_slug]).projects.find_by_slug(params[:project_slug])
     (!!params[:new_room] && params[:new_room] != "") ? room_name = params[:new_room] : room_name = params[:room] 
     room = @project.user.rooms.find_or_create_by(name: room_name.downcase, user: current_user)
+    @project.room.destroy if @project.room.projects.size == 1
     @project.update(name: params[:name].downcase, description: params[:description], materials: params[:materials], room: room, status: params[:status])
     @project.save
 
@@ -44,8 +45,9 @@ class ProjectController < ApplicationController
   
   delete '/users/:user_slug/projects/:project_slug' do
     @project = User.find_by_slug(params[:user_slug]).projects.find_by_slug(params[:project_slug])
-
+    
     if current_user == @project.user
+      @project.room.destroy if @project.room.projects.size == 1
       @project.destroy
       redirect "/users/#{current_user.slug}" 
     else

@@ -11,6 +11,10 @@ class RoomController < ApplicationController
 
   patch '/users/:user_slug/rooms/:room_slug' do
     @room = User.find_by_slug(params[:user_slug]).rooms.find_by_slug(params[:room_slug])
+    # block from updating to a name that already exists?
+
+    # if user hs a room with params[:name], merge projects and delete one of the rooms
+    # else just update the room
     @room.update(name: params[:name].downcase)
     @room.save
 

@@ -1,9 +1,6 @@
-- make edit form default to current value on drop downs
-- room drop down needs to show rooms the user created
-- create project form entry to create a new room
 
+- delete rooms that don't have projects (when edit or delete project, check to see if you should delete room)
 - when editin a room name, ensure that you use find or create
-
 - make so footer only shows up when you scroll all the way to the bottom
 - check for username uniqueness on sign-up
 - remove room show page, and just add edit/delete to user show page
@@ -21,3 +18,5 @@
 
 Questions
 - nested paths -- what's the best convention?
+- can't get check logic to work
+- where should session / login controller actions go?
