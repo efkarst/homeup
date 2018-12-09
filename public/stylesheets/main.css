@@ -1,6 +1,6 @@
 
 body {
-  background-color: lightgrey;
+  background: rgb(230,230,230);
   color: #333;
   font-family: Sans-Serif;
   line-height: 18px;
@@ -23,6 +23,7 @@ section {
 #page-body {
   display: flex;
   flex: 1;
+  height: 100%;
   align-items: stretch;
   margin: 0 0 30px 0;
 }
@@ -57,7 +58,7 @@ section {
   flex: 1 70%;
   /* float: left;
   width: 80%; */
-  border-right: 3px solid white;
+  border-right: 2px solid white;
 }
 
 #sidebar {
@@ -147,7 +148,7 @@ a {
 }
 
 .grey {
-  background: lightgrey;
+  background: rgb(230,230,230);
 }
 
 

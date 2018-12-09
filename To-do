@@ -1,6 +1,4 @@
-
 - when editin a room name, ensure that you use find or create
-- make so footer only shows up when you scroll all the way to the bottom
 - check for username uniqueness on sign-up
 - remove room show page, and just add edit/delete to user show page
 - add path in header to help user navigate rooms
