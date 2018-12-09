@@ -1,5 +1,4 @@
 
-- delete rooms that don't have projects (when edit or delete project, check to see if you should delete room)
 - when editin a room name, ensure that you use find or create
 - make so footer only shows up when you scroll all the way to the bottom
 - check for username uniqueness on sign-up

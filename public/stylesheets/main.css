@@ -155,14 +155,25 @@ a {
 
 header {
   margin: 0px;
+  top: 0;
+  width: 100%;
+}
+
+#header-background {
+  color: white;
+  width: 100%;
+  height: 68px;
+  position: absolute;
+  top: 0;
+  z-index: -3;
 }
 
 /*////////// LOGO //////////*/
 #logo img {
   float: left;
-  height: 90px;
-  width: 90px;
-  margin: 10px;
+  height: 95px;
+  width: 95px;
+  margin: 12px 0 0 18px;
   z-index: 1;
 }
 
@@ -171,19 +182,15 @@ header {
 #navbar {
   float: left;
   top: 0;
-  left: 99;
-  text-align: left;
+  left: 100;
+  text-align: right;
 }
 
-#navbar nav {
-  border-left: 1px solid #ccc;
-}
 
 #navbar nav a {
   display: inline-block;
   width: 120px;
-  margin: 22px 0;
-  padding: px 0;
+  margin: 25px 0;
   color: darkslategray;
   text-align: center;
   border-right: 1px solid #ccc;
@@ -191,10 +198,16 @@ header {
   font: 1em "Trebuchet MS", Arial, sans-serif;
 }
 
+#navbar nav a:last-child {
+  border: none;
+}
+
+
 /*////////// USER //////////*/
 #user {
   text-align: right;
   padding: 22px;
+  float: right;
 }
 
 
