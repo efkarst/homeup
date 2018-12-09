@@ -1,4 +1,3 @@
-- when editin a room name, ensure that you use find or create
 - check for username uniqueness on sign-up
 - add new project button under each room on user show page
 - can i use memoization to not load data 50 times?
