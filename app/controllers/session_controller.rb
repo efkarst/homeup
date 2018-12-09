@@ -10,16 +10,27 @@ class SessionController < ApplicationController
   post '/signup' do
     user = User.new(name: params[:name], username: params[:username], password: params[:password])
 
-    #add logic to ensure username is unique and surface needed messaging
+    User.all.each do |user|
+      if user.username == params[:username]
+        @exists = true
+        break
+      else
+        @exists = false
+      end
+    end
 
-    if user.name == "" || user.username == "" || user.password == nil
+    if @exists == true
+      flash[:signup] = "Sorry, the username '#{params[:username]}' is taken! Try another username."
+      redirect '/signup'
+    elsif user.name == "" || user.username == "" || user.password == nil
+      flash[:signup] = "Make sure you add a name, username and password."
       redirect '/signup'
     elsif user.save
       session[:user_id] = user.id
       redirect "/users/#{user.slug}"
     else
+      flash[:signup] = "Something went wrong. Please try again."
       redirect '/signup'
-      #refactor and include error messaging
     end
 
   end

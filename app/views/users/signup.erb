@@ -1,6 +1,12 @@
 <%content_for :main do %>
   <section class = "clearfix"> 
     <h1>homeUp Sign Up</h1>
+
+    <%if !!flash[:signup]%>
+      <div class="flash wrapper clearfix">
+        <%=flash[:signup]%>
+      </div>
+    <%end%>
     
     <div class = "form clearfix">
       <form method='POST' action='/signup'>
