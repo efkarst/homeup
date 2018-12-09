@@ -11,7 +11,11 @@
         Start a New Room: <input type='text' name='new_room'></br>
         Or Add to an Existing Room:</br>
         <%current_user.rooms.each do |room|%>
-          <input type='radio' name = 'room' value='<%=room.name%>' id='<%=room.name%>'><%=room.name.capitalize%> </br> 
+          <% if @project.room.name == room.name %>
+            <input type='radio' name = 'room' value='<%=room.name%>' id='<%=room.name%>' checked><%=room.name.capitalize%> </br> 
+          <%else%>
+            <input type='radio' name = 'room' value='<%=room.name%>' id='<%=room.name%>'><%=room.name.capitalize%> </br> 
+          <%end%>
         <%end%> </br>
         
         Project Status: <select name='status' form='edit_project'>

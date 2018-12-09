@@ -24,7 +24,6 @@ class ProjectController < ApplicationController
 
   get '/users/:user_slug/projects/:project_slug/edit' do
     @project = User.find_by_slug(params[:user_slug]).projects.find_by_slug(params[:project_slug])
-
     if current_user == @project.user
       erb :'projects/edit'
     else
