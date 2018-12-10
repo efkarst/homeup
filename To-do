@@ -1,9 +1,8 @@
-- can i use memoization to not load data 50 times?
-- add content to side bar
 - format forms
+- add content to side bar
 - validate user input so bad data cannot be persisted in db
 - refactor views & css
-- refactor controllers
+- refactor controllers - use memoization where possible
 - make room layouts sort by completed / not
 
 
