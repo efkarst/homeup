@@ -49,7 +49,8 @@ class SessionController < ApplicationController
       session[:user_id] = user.id
       redirect "/users/#{user.slug}"
     else
-      redirect '/login' #do error messaging
+      flash[:login] = "Incorrect username or password."
+      redirect '/login'
     end
   end
 

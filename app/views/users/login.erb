@@ -9,6 +9,12 @@
       </div>
     </div>
 
+    <%if !!flash[:login]%>
+      <div class="flash wrapper home-user-options clearfix">
+        <%=flash[:login]%>
+      </div>
+    <%end%>
+
     <div class = "home-user-options form clearfix">
       <form method='POST' action='/login'>
       Username: <input type="text" name="username" placeholder="username">
