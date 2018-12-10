@@ -18,7 +18,32 @@ section {
 .welcome-pages {
   position: absolute;
   top: 10%;
-  left: 33%; 
+  left: 30%; 
+}
+
+.home-page {
+  display: flex;
+  justify-content: flex-start;
+  align-content: flex-start;
+  align-items: flex-end;
+}
+
+.home-user-options {
+  margin: 0 0 0 20px;
+}
+
+.home-logo img {
+  height: 150px;
+  width: 150px;
+  margin: 0 0 0 0;
+  display: flex;
+}
+
+.home-title {
+  margin: 0;
+  font-size: 3em;
+  padding: 8px;
+  font-weight: 700;
 }
 
 #page-body {

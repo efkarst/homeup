@@ -1,8 +1,15 @@
 <%content_for :main do %>
-  <section class = "clearfix"> 
-    <h1>homeUp Login</h1>
+  <div class = "clearfix"> 
+    <div class="home-page">
+      <div class="home-logo" class="clearfix">
+        <img src='/images/homeUp-logo.png'>
+      </div>
+      <div class="clearfix">
+        <h1 class="home-title" >homeUp Login</h1>
+      </div>
+    </div>
 
-    <div class = "form clearfix">
+    <div class = "home-user-options form clearfix">
       <form method='POST' action='/login'>
       Username: <input type="text" name="username" placeholder="username">
       Password: <input type="password" name="password" placeholder="password">

@@ -1,14 +1,21 @@
 <%content_for :main do %>
-  <section class = "clearfix"> 
-    <h1>homeUp Sign Up</h1>
+  <div class = "clearfix"> 
+    <div class="home-page">
+      <div class="home-logo" class="clearfix">
+        <img src='/images/homeUp-logo.png'>
+      </div>
+      <div class="clearfix">
+        <h1 class="home-title" >homeUp Signup</h1>
+      </div>
+    </div>
 
     <%if !!flash[:signup]%>
-      <div class="flash wrapper clearfix">
+      <div class="flash wrapper home-user-options clearfix">
         <%=flash[:signup]%>
       </div>
     <%end%>
     
-    <div class = "form clearfix">
+    <div class = "home-user-options form clearfix">
       <form method='POST' action='/signup'>
       Name: <input type="text" name="name" placeholder="Name">
       Username: <input type="text" name="username" placeholder="username">
