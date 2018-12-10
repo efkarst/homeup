@@ -1,9 +1,12 @@
 - format forms
+- remove side bar from eveyrthing but project detail page?
 - add content to side bar
 - validate user input so bad data cannot be persisted in db
 - refactor views & css
 - refactor controllers - use memoization where possible
 - make room layouts sort by completed / not
+- add validations 
+- remove data tables & columns I don't need
 
 
 

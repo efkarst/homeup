@@ -10,25 +10,25 @@
             <td><input type='text' name='name'></td>
           </tr>    
           <tr>
-            <th>Description:</th>
-            <td><input type='text' name='description'></td>
+            <th>Cost ($):</th>
+            <td><input type='text' name='cost'></td>
           </tr>
           <tr>
-            <th>Materials:</th>
-            <td><input type='text' name='materials'></td>
-          </tr>
+            <th>Duration (hr):</th>
+            <td><input type='text' name='duration'></td>
+          </tr>  
           <%if current_user.rooms.empty? == true%>
             <tr>
               <th>Room:</th>
-              <td><input type='text' name='room'></td>
+              <td><input type='text' name='new_room'></td>
             </tr>
           <%else%>
             <tr>
-              <th>Start a New Room:</th>
+              <th>Add to New Room:</th>
               <td><input type='text' name='new_room'></td>
             </tr>
             <tr>
-              <th>Or add to an existing room:</th>
+              <th>Add to an existing room:</th>
               <td>            
                 <%current_user.rooms.each do |room|%>
                   <input type='radio' name = 'room' value='<%=room.name%>' id='<%=room.name%>'> <%=room.name.capitalize%></br>  
@@ -43,6 +43,14 @@
               <input type = 'radio' name='status' value = 'In progress' id = 'In progress'>In Progress</br>
               <input type = 'radio' name='status' value = 'Complete' id = 'Complete'>Complete
             </td>
+          </tr>
+          <tr>
+            <th>Notes:</th>
+            <td class="large-text"><input type='text' name='description'></td>
+          </tr>
+          <tr>
+            <th>Materials:</th>
+            <td class="large-text"><input type='text' name='materials'></td>
           </tr>
           <tr>
             <th> </th>

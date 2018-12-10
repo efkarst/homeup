@@ -202,6 +202,9 @@ td {
   padding: 10px;
 }
 
+td.large-text input{
+  height: 110px;
+}
 
 
 /*////////// BACKGROUNDS //////////*/
