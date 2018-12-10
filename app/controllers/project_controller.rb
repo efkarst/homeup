@@ -37,7 +37,7 @@ class ProjectController < ApplicationController
     (!!params[:new_room] && params[:new_room] != "") ? room_name = params[:new_room] : room_name = params[:room] 
     room = @project.user.rooms.find_or_create_by(name: room_name.downcase, user: current_user)
     @project.room.destroy if @project.room.projects.size == 1
-    @project.update(name: params[:name].downcase, description: params[:description], materials: params[:materials], room: room, status: params[:status])
+    @project.update(name: params[:name].downcase, description: params[:description], materials: params[:materials], room: room, status: params[:status], cost: params[:cost], duration: params[:duration])
     @project.save
 
     redirect "/users/#{@project.user.slug}/projects/#{@project.slug}" 

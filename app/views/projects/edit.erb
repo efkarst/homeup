@@ -5,36 +5,66 @@
     <div class = "form clearfix">
       <form action="/users/<%=@project.user.slug%>/projects/<%=@project.slug%>" method="POST" id='edit_project'>
         <input id="hidden" type="hidden" name="_method" value="patch">  
-        Project Name: <input type='text' name='name' value='<%=@project.name%>'></br>
-        Description: <input type='text' name='description'value='<%=@project.description%>'></br>
-        Materials: <input type='text' name='materials' value='<%=@project.materials%>'></br>
-        Start a New Room: <input type='text' name='new_room'></br>
-        Or Add to an Existing Room:</br>
-        <%current_user.rooms.each do |room|%>
-          <% if @project.room.name == room.name %>
-            <input type='radio' name = 'room' value='<%=room.name%>' id='<%=room.name%>' checked><%=room.name.capitalize%> </br> 
-          <%else%>
-            <input type='radio' name = 'room' value='<%=room.name%>' id='<%=room.name%>'><%=room.name.capitalize%> </br> 
-          <%end%>
-        <%end%> </br>
-        
-        Project Status: </br>
-        <%if @project.status == "Not started"%>
-          <input type = 'radio' name='status' value = 'Not started' id = 'Not started' checked>Not Started</br>
-          <input type = 'radio' name='status' value = 'In progress' id = 'In progress'>In Progress</br>
-          <input type = 'radio' name='status' value = 'Complete' id = 'Complete'>Complete</br>
-        <%elsif @project.status == "In progress"%>
-          <input type = 'radio' name='status' value = 'Not started' id = 'Not started'>Not Started</br>
-          <input type = 'radio' name='status' value = 'In progress' id = 'In progress' checked>In Progress</br>
-          <input type = 'radio' name='status' value = 'Complete' id = 'Complete'>Complete</br>
-        <%else%>
-          <input type = 'radio' name='status' value = 'Not started' id = 'Not started'>Not Started</br>
-          <input type = 'radio' name='status' value = 'In progress' id = 'In progress'>In Progress</br>
-          <input type = 'radio' name='status' value = 'Complete' id = 'Complete' checked>Complete</br>
-        <%end%>
-        
-        </br></br>
-        <input type='submit' value='Update Project'>
+          <table>
+            <tr>
+              <th>Project Name:</th>
+              <td><input type='text' name='name' value='<%=@project.name%>'></td>
+            </tr> 
+            <tr>
+              <th>Cost ($):</th>
+              <td><input type='text' name='cost' value='<%=@project.cost%>'></td>
+            </tr> 
+          <tr>
+            <th>Duration (hr):</th>
+            <td><input type='text' name='duration' value='<%=@project.duration%>'></td>
+          </tr>  
+          <tr>
+            <th>Add to New Room:</th>
+            <td><input type='text' name='new_room'></td>
+          </tr>
+          <tr>
+            <th>Add to an existing room:</th>
+            <td>            
+              <%current_user.rooms.each do |room|%>
+                <% if @project.room.name == room.name %>
+                  <input type='radio' name = 'room' value='<%=room.name%>' id='<%=room.name%>' checked><%=room.name.capitalize%> </br> 
+                <%else%>
+                  <input type='radio' name = 'room' value='<%=room.name%>' id='<%=room.name%>'><%=room.name.capitalize%> </br> 
+                <%end%>
+              <%end%> </br>
+            </td>
+          </tr>
+          <tr>
+            <th>Project Status:</th>
+            <td>
+              <%if @project.status == "Not started"%>
+                <input type = 'radio' name='status' value = 'Not started' id = 'Not started' checked>Not Started</br>
+                <input type = 'radio' name='status' value = 'In progress' id = 'In progress'>In Progress</br>
+                <input type = 'radio' name='status' value = 'Complete' id = 'Complete'>Complete</br>
+              <%elsif @project.status == "In progress"%>
+                <input type = 'radio' name='status' value = 'Not started' id = 'Not started'>Not Started</br>
+                <input type = 'radio' name='status' value = 'In progress' id = 'In progress' checked>In Progress</br>
+                <input type = 'radio' name='status' value = 'Complete' id = 'Complete'>Complete</br>
+              <%else%>
+                <input type = 'radio' name='status' value = 'Not started' id = 'Not started'>Not Started</br>
+                <input type = 'radio' name='status' value = 'In progress' id = 'In progress'>In Progress</br>
+                <input type = 'radio' name='status' value = 'Complete' id = 'Complete' checked>Complete</br>
+              <%end%>
+            </td>
+          </tr>
+          <tr>
+            <th>Notes:</th>
+            <td class="large-text"><input type='text' name='description' value='<%=@project.description%>'></td>
+          </tr>
+          <tr>
+            <th>Materials:</th>
+            <td class="large-text"><input type='text' name='materials' value='<%=@project.materials%>'></td>
+          </tr>
+          <tr>
+            <th> </th>
+            <td><input type='submit' value='Update Project'></td>
+          </tr>
+        </table>
       </form>
     </div>
   </section>
