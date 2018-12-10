@@ -1,6 +1,6 @@
-- format forms
 - remove side bar from new / edit pages
 - add content to side bar
+
 - validate user input so bad data cannot be persisted in db
 - refactor views & css
 - refactor controllers - use memoization where possible
