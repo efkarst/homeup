@@ -122,6 +122,12 @@ footer {
   margin: 30px 20px 0 0; 
 }
 
+.new-project {
+  color: rgb(140, 173, 118);
+  font-family: "Heebo", sans-serif;
+  font-weight: 700;
+}
+
 /*////////// Text //////////*/
 a {
   text-decoration: none;
