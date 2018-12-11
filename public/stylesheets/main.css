@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Heebo:300,500,700|Roboto:300');
 
+/*////////// Body //////////*/
+
 body {
   background: rgb(230,230,230);
   color: #333;
@@ -11,47 +13,38 @@ body {
   margin: 0 auto;
 }
 
-section {
-  margin: 30px;
-}
-
-.welcome-pages {
-  position: absolute;
-  top: 10%;
-  left: 30%; 
-}
-
-.home-page {
-  display: flex;
-  justify-content: flex-start;
-  align-content: flex-start;
-  align-items: flex-end;
-}
-
-.home-user-options {
-  margin: 0 0 0 20px;
-}
-
-.home-logo img {
-  height: 150px;
-  width: 150px;
-  margin: 0 0 0 0;
-  display: flex;
-}
-
-.home-title {
-  margin: 0;
-  font-size: 3em;
-  padding: 8px;
-  font-weight: 700;
-}
-
-#page-body {
+#split-page-body {
   display: flex;
   flex: 1;
   height: 100%;
   align-items: stretch;
   margin: 0 0 30px 0;
+}
+
+#main {
+  flex: 1 70%;
+  border-right: 2px solid white;
+}
+
+#sidebar {
+  flex: 1 30%;
+  padding-right: 30px;
+}
+
+/*////////// BACKGROUNDS //////////*/
+.header-background {
+  background: white;
+}
+
+.body-background {
+  background: rgb(230,230,230);
+}
+
+
+/*////////// Sections //////////*/
+
+section {
+  margin: 30px;
 }
 
 .section-title {
@@ -60,7 +53,6 @@ section {
   text-align: center;
   padding: 40px 120px 0px 0px;
 }
-
 
 .section-title h1 {
   margin: 0;
@@ -78,27 +70,6 @@ section {
   width: 1.5em;
   border: 0;
   padding-bottom: 1px;
-}
-
-#main {
-  flex: 1 70%;
-  /* float: left;
-  width: 80%; */
-  border-right: 2px solid white;
-}
-
-#sidebar {
-  flex: 1 30%;
-  padding-right: 30px;
-}
-
-footer {
-  padding: 10px;
-  text-align: center;
-  background: white;
-  width: 100%;
-  position: fixed;
-  bottom: 0%;
 }
 
 /*////////// Grid //////////*/
@@ -127,6 +98,118 @@ footer {
   font-family: "Heebo", sans-serif;
   font-weight: 700;
 }
+
+/*////////// Footer //////////*/
+
+footer {
+  padding: 10px;
+  text-align: center;
+  background: white;
+  width: 100%;
+  position: fixed;
+  bottom: 0%;
+  left: 0%
+}
+
+/*////////// HEADER //////////*/
+
+header {
+  margin: 0px;
+  top: 0;
+  width: 100%;
+}
+
+#header-background {
+  color: white;
+  width: 100%;
+  height: 68px;
+  position: absolute;
+  top: 0;
+  z-index: -3;
+}
+
+#subheader {
+  position: absolute;
+  top: 76px;
+  left: 140px;
+}
+
+/*////////// Header > Logo //////////*/
+
+#logo img {
+  float: left;
+  height: 95px;
+  width: 95px;
+  margin: 12px 0 0 18px;
+  z-index: 1;
+}
+
+/*////////// Header > Navbar //////////*/
+
+#navbar {
+  float: left;
+  top: 0;
+  left: 100;
+  text-align: right;
+}
+
+#navbar nav a {
+  display: inline-block;
+  width: 120px;
+  margin: 25px 0;
+  color: darkslategray;
+  text-align: center;
+  border-right: 1px solid #ccc;
+  text-decoration: none;
+  font: 1em "Heebo", sans-serif;
+  font-weight: 300;
+}
+
+#navbar nav a:last-child {
+  border: none;
+}
+
+
+/*////////// Header > User //////////*/
+#user {
+  text-align: right;
+  padding: 22px;
+  float: right;
+}
+
+/*////////// Signup and Login Pages //////////*/
+
+.centered {
+  position: absolute;
+  top: 10%;
+  left: 30%; 
+}
+
+.large-logo-title {
+  display: flex;
+  justify-content: flex-start;
+  align-content: flex-start;
+  align-items: flex-end;
+}
+
+.large-logo img {
+  height: 150px;
+  width: 150px;
+  margin: 0 0 0 0;
+  display: flex;
+}
+
+.large-title {
+  margin: 0;
+  font-size: 3em;
+  padding: 8px;
+  font-weight: 700;
+}
+
+.details {
+  margin: 0 0 0 20px;
+}
+
 
 /*////////// Text //////////*/
 a {
@@ -163,6 +246,8 @@ h4 a {
 .link {
   font-size: 0.5em;
 }
+
+/*////////// Buttons //////////*/
 
 .buttons {
   width: 100%;
@@ -207,85 +292,7 @@ td.large-text input{
 }
 
 
-/*////////// BACKGROUNDS //////////*/
-.white {
-  background: white;
-}
-
-.grey {
-  background: rgb(230,230,230);
-}
-
-
-/*////////// HEADER //////////*/
-
-header {
-  margin: 0px;
-  top: 0;
-  width: 100%;
-}
-
-#header-background {
-  color: white;
-  width: 100%;
-  height: 68px;
-  position: absolute;
-  top: 0;
-  z-index: -3;
-}
-
-#subheader {
-  position: fixed;
-  top: 76px;
-  left: 140px;
-}
-
-/*////////// LOGO //////////*/
-#logo img {
-  float: left;
-  height: 95px;
-  width: 95px;
-  margin: 12px 0 0 18px;
-  z-index: 1;
-}
-
-/*////////// NAVBAR //////////*/
-
-#navbar {
-  float: left;
-  top: 0;
-  left: 100;
-  text-align: right;
-}
-
-
-#navbar nav a {
-  display: inline-block;
-  width: 120px;
-  margin: 25px 0;
-  color: darkslategray;
-  text-align: center;
-  border-right: 1px solid #ccc;
-  text-decoration: none;
-  font: 1em "Heebo", sans-serif;
-  font-weight: 300;
-}
-
-#navbar nav a:last-child {
-  border: none;
-}
-
-
-/*////////// USER //////////*/
-#user {
-  text-align: right;
-  padding: 22px;
-  float: right;
-}
-
-
 /*////////// FIXES //////////*/
-
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
