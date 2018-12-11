@@ -19,6 +19,7 @@ class ProjectController < ApplicationController
 
   get '/users/:user_slug/projects/:project_slug' do
     @project = User.find_by_slug(params[:user_slug]).projects.find_by_slug(params[:project_slug]) #refactor to one find statement?
+
     erb :'projects/show'
   end
 
@@ -36,7 +37,7 @@ class ProjectController < ApplicationController
     @project = User.find_by_slug(params[:user_slug]).projects.find_by_slug(params[:project_slug])
     (!!params[:new_room] && params[:new_room] != "") ? room_name = params[:new_room] : room_name = params[:room] 
     room = @project.user.rooms.find_or_create_by(name: room_name.downcase, user: current_user)
-    @project.room.destroy if @project.room.projects.size == 1
+    @project.room.destroy if @project.room.projects.size == 1 && @project.room.name != room_name
     @project.update(name: params[:name].downcase, description: params[:description], materials: params[:materials], room: room, status: params[:status], cost: params[:cost], duration: params[:duration])
     @project.save
 

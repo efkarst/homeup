@@ -1,5 +1,4 @@
-- remove side bar from new / edit pages
-- when editing a project, the room isn't being identified so no user is being added
+- move form submit button to first row of table
 - add content to side bar on project, room, and overall details pages
 
 - validate user input so bad data cannot be persisted in db
