@@ -1,14 +1,10 @@
-- move form submit button to first row of table
 - add content to side bar on project, room, and overall details pages
-
 - validate user input so bad data cannot be persisted in db
-- refactor views & css
+- refactor views
 - refactor controllers - use memoization where possible
 - make room layouts sort by completed / not
-- add validations 
+- add any other validations?
 - remove data tables & columns I don't need
-- footer floats to the right on login page
-
 
 
 Questions
