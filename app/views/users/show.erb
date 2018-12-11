@@ -4,7 +4,7 @@
     <h4><a href="/users/<%=@user.slug%>"><%=@user.name.capitalize%>'s Home</a></h4>
   </div> <!--subheader-->
 
-  <%if @user.rooms.empty? == true%>
+  <%if @user.rooms.empty? == true && @user == current_user%>
     <section class = "clearfix"> 
       <h1>Start a New Project</h1>
       <div class="grid clearfix">
@@ -14,7 +14,9 @@
   <%else%>
     <%@user.rooms.each do |room|%>
       <section class = "clearfix"> 
-        <a href = '/users/<%=@user.slug%>/rooms/<%=room.slug%>'><h1><%=room.name.capitalize%></h1></a>
+      <div class="section-title">
+      <a href = '/users/<%=@user.slug%>/rooms/<%=room.slug%>'><h1><%=room.name.capitalize%></h1></a>
+      </div> <!-- Section title-->
         <div class="grid clearfix">
           <%room.projects.each do |project|%>
             <a href="/users/<%=@user.slug%>/projects/<%=project.slug%>"><%=project.name.capitalize%></a>
