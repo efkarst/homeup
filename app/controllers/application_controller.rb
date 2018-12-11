@@ -1,5 +1,6 @@
 require './config/environment'
 require 'sinatra/flash'
+require 'sinatra/content_for'
 
 class ApplicationController < Sinatra::Base
   helpers Sinatra::ContentFor

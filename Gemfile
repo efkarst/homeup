@@ -11,7 +11,7 @@ gem 'shotgun'
 gem 'pry'
 gem 'bcrypt'
 gem "tux"
-gem 'sinatra-contrib'
+gem 'sinatra-contrib',require: false
 gem 'sinatra-flash'
 
 group :test do
