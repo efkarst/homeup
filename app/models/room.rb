@@ -33,4 +33,21 @@ class Room < ActiveRecord::Base
     end
     completed
   end
+
+  def complete_projects
+    completed = []
+    self.projects.each do |project|
+      completed << project if project.status == "Complete"
+    end
+    completed
+  end
+
+  def incomplete_projects
+    incomplete = []
+    self.projects.each do |project|
+      incomplete << project if project.status != "Complete"
+    end
+    incomplete
+  end
+
 end

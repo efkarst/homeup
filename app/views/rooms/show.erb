@@ -7,9 +7,7 @@
 
   <section class = "clearfix"> 
     <div class='section-title'>
-        
       <h1><%=@room.name.capitalize%></h1>
-
       <%if current_user == @room.user%>
         <a href='/users/<%=@room.user.slug%>/rooms/<%=@room.slug%>/edit'><img src='/images/edit-icon.png' alt="Edit Room"></a>
         <form action="/users/<%=@room.user.slug%>/rooms/<%=@room.slug%>" method="POST">
@@ -18,12 +16,23 @@
         </form>
       <%end%>
     </div>
+
     <div class="grid clearfix">
-      <%@room.projects.each do |project|%>
+      <%@room.incomplete_projects.each do |project|%>
         <a href="/users/<%=project.user.slug%>/projects/<%=project.slug%>"><%=project.name.capitalize%></a>
       <%end%>
     </div>
 
+
+    <div class='section-title'>
+      <h3>Completed</h3>
+    </div>
+
+    <div class="grid clearfix">
+      <%@room.complete_projects.each do |project|%>
+        <a href="/users/<%=project.user.slug%>/projects/<%=project.slug%>"><%=project.name.capitalize%></a>
+      <%end%>
+    </div>
   </section>
 <%end%>
 
