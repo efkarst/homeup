@@ -56,11 +56,11 @@
           </tr>
           <tr>
             <th>Notes:</th>
-            <td class="large-text"><input type='text' name='description' value='<%=@project.description%>'></td>
+            <td><textarea type='text' name='description' value='<%=@project.description%>'><%=@project.description%></textarea></td>
           </tr>
           <tr>
             <th>Materials:</th>
-            <td class="large-text"><input type='text' name='materials' value='<%=@project.materials%>'></td>
+            <td><textarea type='text' name='materials' value='<%=@project.materials%>' form='edit_project'><%=@project.materials%></textarea></td>
           </tr>
         </table>
       </form>

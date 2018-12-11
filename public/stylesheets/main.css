@@ -198,6 +198,7 @@ header {
   padding-right: 30px;
 }
 
+
 /*////////// Signup and Login Pages //////////*/
 
 .centered {
@@ -314,7 +315,7 @@ td {
   padding: 10px;
 }
 
-td.large-text input{
+textarea {
   height: 110px;
 }
 
