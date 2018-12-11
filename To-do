@@ -1,10 +1,16 @@
-- add content to side bar on project, room, and overall details pages
-- validate user input so bad data cannot be persisted in db
+- validate user input so bad data cannot be persisted in db, and don't persist blank entries. Show error if some things aren't filled in?
 - refactor views
 - refactor controllers - use memoization where possible
+- refactor total-cost methods into independent module?
+
 - make room layouts sort by completed / not
-- add any other validations?
+- add any other validations? ensure cost/hours are just numbers. shoudl they be numbers in db?
 - remove data tables & columns I don't need
+
+- does total room cost belong in database, or just as a method?
+- update "description" to "notes"?
+
+
 
 
 Questions

@@ -26,7 +26,18 @@
 <%end%>
 
 <%content_for :sidebar do%>
-  <section>
-    <h1>Sidebar</h1>
+  <section class='panel'>
+    <div class='panel-item'>
+      <h4>Projects Completed</h4>
+      <h3><%=@user.number_of_projects_completed%></h3></br>
+    </div>
+    <div class='panel-item'>
+      <h4>Total Cost of Projects</h4>
+      <h3>$<%=@user.total_cost%></h3></br>
+    </div>
+    <div class='panel-item'>
+      <h4>Time to Finish All Projects</h4>
+      <h3><%=@user.total_duration%> hours</h3></br>
+    </div>
   </section>
 <%end%>

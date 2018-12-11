@@ -23,7 +23,8 @@ body {
 
 #main {
   flex: 1 70%;
-  border-right: 2px solid white;
+  padding-right: 70px;
+  /* border-right: 2px solid white; */
 }
 
 #sidebar {
@@ -70,6 +71,15 @@ section {
   width: 1.5em;
   border: 0;
   padding-bottom: 1px;
+}
+
+section.panel {
+  margin: 70px;
+}
+
+section.panel.panel-item {
+  margin-bottom: 10px;
+  max-width: 100px;
 }
 
 /*////////// Grid //////////*/
@@ -177,6 +187,16 @@ header {
   float: right;
 }
 
+/*////////// Project Details //////////*/
+#project-notes {
+  margin-top: 50px;
+  display: flex;
+}
+
+#project-notes :first-child {
+  padding-right: 30px;
+}
+
 /*////////// Signup and Login Pages //////////*/
 
 .centered {
@@ -230,6 +250,13 @@ h4 {
   color: rgb(130,130,130);
   font-weight: 200;
   font-size: 10pt;
+  margin-bottom: 5px;
+}
+
+h3 {
+  font-family: 'Heebo', sans-serif;
+  font-weight: 700;
+  margin: 0;
 }
 
 h4 a {
@@ -240,7 +267,6 @@ h4 a {
   font-family: "Heebo", sans-serif;
   color: rgb(175, 7, 7);
   padding: 20px 0 0 0;
-
 }
 
 .link {
