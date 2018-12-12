@@ -1,7 +1,4 @@
-- update cost and time to be integers, validate i get numbers as inputs
-
-change_column :products, :part_number, :text
-
+- Validate user enters numbers for cost and duration
 - validate user fills in all fields
 - validate that user doesn't use symbols or dashes for project name, user name, room name
 - refactor 'totals' methods into separate module
