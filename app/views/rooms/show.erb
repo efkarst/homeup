@@ -23,16 +23,17 @@
       <%end%>
     </div>
 
+    <%if @room.complete_projects.empty? == false%>
+      <div class='section-title'>
+        <h3>Completed</h3>
+      </div>
 
-    <div class='section-title'>
-      <h3>Completed</h3>
-    </div>
-
-    <div class="grid clearfix">
-      <%@room.complete_projects.each do |project|%>
-        <a href="/users/<%=project.user.slug%>/projects/<%=project.slug%>"><%=project.name.capitalize%></a>
-      <%end%>
-    </div>
+      <div class="grid clearfix">
+        <%@room.complete_projects.each do |project|%>
+          <a href="/users/<%=project.user.slug%>/projects/<%=project.slug%>"><%=project.name.capitalize%></a>
+        <%end%>
+      </div>
+    <%end%>
   </section>
 <%end%>
 
@@ -44,11 +45,11 @@
     </div>
     <div class='panel-item'>
       <h4>Total Cost of Room</h4>
-      <h3>$<%=@room.total_cost%></h3></br>
+      <h3>$<%=@room.total_cost_of_incomplete_projects%></h3></br>
     </div>
     <div class='panel-item'>
       <h4>Time to Finish Room</h4>
-      <h3><%=@room.total_duration%> hours</h3></br>
+      <h3><%=@room.total_duration_of_incomplete_projects%> hours</h3></br>
     </div>
   </section>
 <%end%>

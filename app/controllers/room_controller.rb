@@ -1,16 +1,16 @@
 class RoomController < ApplicationController
   get '/users/:user_slug/rooms/:room_slug' do
-    @room = User.find_by_slug(params[:user_slug]).rooms.find_by_slug(params[:room_slug])
+    @room = User.find_by_slug(params[:user_slug],:username).rooms.find_by_slug(params[:room_slug],:name)
     erb :'rooms/show'
   end
 
   get '/users/:user_slug/rooms/:room_slug/edit' do
-    @room = User.find_by_slug(params[:user_slug]).rooms.find_by_slug(params[:room_slug])
+    @room = User.find_by_slug(params[:user_slug],:username).rooms.find_by_slug(params[:room_slug],:name)
     erb :'rooms/edit'
   end
 
   patch '/users/:user_slug/rooms/:room_slug' do
-    @room = User.find_by_slug(params[:user_slug]).rooms.find_by_slug(params[:room_slug])
+    @room = User.find_by_slug(params[:user_slug],:username).rooms.find_by_slug(params[:room_slug],:name)
 
     current_user.rooms.each do |room| 
       if room.name == params[:name].downcase && @room.name != room.name
@@ -32,7 +32,7 @@ class RoomController < ApplicationController
   end
 
   delete '/users/:user_slug/rooms/:room_slug' do
-    @room = User.find_by_slug(params[:user_slug]).rooms.find_by_slug(params[:room_slug])
+    @room = User.find_by_slug(params[:user_slug],:username).rooms.find_by_slug(params[:room_slug],:name)
     @room.projects.destroy_all
     @room.destroy
     redirect "/users/#{current_user.slug}" 

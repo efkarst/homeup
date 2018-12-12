@@ -18,13 +18,13 @@ class ProjectController < ApplicationController
   end
 
   get '/users/:user_slug/projects/:project_slug' do
-    @project = User.find_by_slug(params[:user_slug]).projects.find_by_slug(params[:project_slug]) #refactor to one find statement?
+    @project = User.find_by_slug(params[:user_slug],:username).projects.find_by_slug(params[:project_slug],:name) #refactor to one find statement?
 
     erb :'projects/show'
   end
 
   get '/users/:user_slug/projects/:project_slug/edit' do
-    @project = User.find_by_slug(params[:user_slug]).projects.find_by_slug(params[:project_slug])
+    @project = User.find_by_slug(params[:user_slug],:username).projects.find_by_slug(params[:project_slug],:name)
     if current_user == @project.user
       erb :'projects/edit'
     else
@@ -34,7 +34,7 @@ class ProjectController < ApplicationController
   end
 
   patch '/users/:user_slug/projects/:project_slug' do
-    @project = User.find_by_slug(params[:user_slug]).projects.find_by_slug(params[:project_slug])
+    @project = User.find_by_slug(params[:user_slug],:username).projects.find_by_slug(params[:project_slug],:name)
     (!!params[:new_room] && params[:new_room] != "") ? room_name = params[:new_room] : room_name = params[:room] 
     room = @project.user.rooms.find_or_create_by(name: room_name.downcase, user: current_user)
     @project.room.destroy if @project.room.projects.size == 1 && @project.room.name != room_name
@@ -45,7 +45,7 @@ class ProjectController < ApplicationController
   end
   
   delete '/users/:user_slug/projects/:project_slug' do
-    @project = User.find_by_slug(params[:user_slug]).projects.find_by_slug(params[:project_slug])
+    @project = User.find_by_slug(params[:user_slug],:username).projects.find_by_slug(params[:project_slug],:name)
     
     if current_user == @project.user
       @project.room.destroy if @project.room.projects.size == 1
