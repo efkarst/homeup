@@ -8,6 +8,13 @@
     </div>
     <%end%>
 
+    <%if !!session[:edit_room]%>
+      <div class="flash wrapper home-user-options clearfix">
+        <%=session[:edit_room]%>
+        <%session.delete(:edit_room)%>
+      </div>
+    <%end%>
+
     <div class = "form clearfix">
       <form action="/users/<%=@room.user.slug%>/rooms/<%=@room.slug%>" method="POST">
       <input id="hidden" type="hidden" name="_method" value="patch">

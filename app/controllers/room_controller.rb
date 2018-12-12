@@ -21,9 +21,13 @@ class RoomController < ApplicationController
       end
     end
 
+
     if @exists == true
       flash[:room] = "Looks like you already have a room named '#{params[:name]}'. Try another name."
       redirect "/users/#{@room.user.slug}/rooms/#{@room.slug}/edit"
+    elsif ((params[:name].scan(/[\d\sa-zA-Z]/).size == params[:name].length) == false) && params[:name] != ""
+      session[:edit_room] = "Please enter only numbers (0-9) and letters (a-z) in your room name."
+      erb :'rooms/edit' #re-render form to show typed-in values. Flash messages don't seem to work with render.
     else
       @room.update(name: params[:name].downcase)
       @room.save

@@ -1,8 +1,7 @@
-- Validate user enters numbers for cost and duration
-- validate user fills in all fields
-- validate that user doesn't use symbols or dashes for project name, user name, room name
+- bug where project name is shrinking to 1 word
 - refactor views
 - refactor controllers - use memoization where possible
+- write tests
 
 Questions
 - does total room cost belong in database, or just as a method?
