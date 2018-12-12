@@ -1,10 +1,8 @@
 - Validate user enters numbers for cost and duration
 - validate user fills in all fields
 - validate that user doesn't use symbols or dashes for project name, user name, room name
-- refactor 'totals' methods into separate module
 - refactor views
 - refactor controllers - use memoization where possible
-- remove data tables & columns I don't need
 
 Questions
 - does total room cost belong in database, or just as a method?
