@@ -4,6 +4,10 @@ class Room < ActiveRecord::Base
   belongs_to :user
   has_many :projects
   include ProjectStats
+
+  validates :name, presence: true
+  validates :name, format: { with: /\A[a-zA-Z\s\d]+\z/,
+    message: "only allows letters, numbers, and spaces" }
   
   
   def slug

@@ -2,9 +2,9 @@
   <section class="clearfix">
     <h1>New Project</h1>
     
-    <%if @error%>
+    <%if @project%>
       <div class="flash wrapper home-user-options clearfix">
-        <%=@error%>
+        <%=@project.errors.full_messages[0]%>
       </div>
     <%end%>
 

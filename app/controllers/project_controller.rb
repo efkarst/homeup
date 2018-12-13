@@ -9,31 +9,33 @@ class ProjectController < ApplicationController
   end
 
   post '/projects' do
-    if project_names.include?(params[:name]) == true
-      @error = "Looks like you already have a project with that name. Pick another name."
-      erb :'projects/new' #re-render form to show typed-in values. Flash messages don't seem to work with render.
-      
-    elsif params[:new_room] == "" && params[:room] == nil
-      @error = "Please add or choose a room."
-      erb :'projects/new' #re-render form to show typed-in values. Flash messages don't seem to work with render.
-    elsif ((params[:cost].scan(/[0-9]/).size == params[:cost].length) == false) && params[:cost] != ""
-      @error = "Please enter only number 0-9 for cost."
-      erb :'projects/new' #re-render form to show typed-in values. Flash messages don't seem to work with render.
-    elsif ((params[:duration].scan(/[0-9]/).size == params[:duration].length) == false) && params[:cost] != ""
-      @error = "Please enter only number 0-9 for duration."
-      erb :'projects/new' #re-render form to show typed-in values. Flash messages don't seem to work with render.
-    elsif (params[:name].scan(/[\d\sa-zA-Z]/).size == params[:name].length) == false
-      @error = "Please enter only numbers (0-9) and letters (a-z) in your project name."
-      erb :'projects/new' #re-render form to show typed-in values. Flash messages don't seem to work with render.
-    elsif ((params[:new_room].scan(/[\d\sa-zA-Z]/).size == params[:new_room].length) == false) && params[:new_room] !=""
-      @error = "Please enter only numbers (0-9) and letters (a-z) in your room name."
-      erb :'projects/edit' #re-render form to show typed-in values. Flash messages don't seem to work with render.
-    else
       (!!params[:new_room] && params[:new_room] != "") ? room_name = params[:new_room] : room_name = params[:room] 
-      room = current_user.rooms.find_or_create_by(name: room_name.downcase, user: current_user)
-      project = Project.create(name: params[:name].downcase, description: params[:description], materials: params[:materials], room: room, status: params[:status], cost: params[:cost], duration: params[:duration])
-      redirect "/users/#{project.user.slug}/projects/#{project.slug}"
-    end
+      @room = current_user.rooms.find_or_create_by(name: room_name.downcase, user: current_user)
+      @project = Project.create(name: params[:name].downcase, description: params[:description], materials: params[:materials], room: @room, status: params[:status], cost: params[:cost], duration: params[:duration])
+      @project.errors.messages.any? ? (erb :'projects/new') : (redirect "/users/#{@project.user.slug}/projects/#{@project.slug}")
+
+    # if project_names.include?(params[:name]) == true
+    #   @error = "Looks like you already have a project with that name. Pick another name."
+    #   erb :'projects/new' #re-render form to show typed-in values. Flash messages don't seem to work with render.
+      
+    # elsif params[:new_room] == "" && params[:room] == nil
+    #   @error = "Please add or choose a room."
+    #   erb :'projects/new' #re-render form to show typed-in values. Flash messages don't seem to work with render.
+    # elsif ((params[:cost].scan(/[0-9]/).size == params[:cost].length) == false) && params[:cost] != ""
+    #   @error = "Please enter only number 0-9 for cost."
+    #   erb :'projects/new' #re-render form to show typed-in values. Flash messages don't seem to work with render.
+    # elsif ((params[:duration].scan(/[0-9]/).size == params[:duration].length) == false) && params[:cost] != ""
+    #   @error = "Please enter only number 0-9 for duration."
+    #   erb :'projects/new' #re-render form to show typed-in values. Flash messages don't seem to work with render.
+    # elsif (params[:name].scan(/[\d\sa-zA-Z]/).size == params[:name].length) == false
+    #   @error = "Please enter only numbers (0-9) and letters (a-z) in your project name."
+    #   erb :'projects/new' #re-render form to show typed-in values. Flash messages don't seem to work with render.
+    # elsif ((params[:new_room].scan(/[\d\sa-zA-Z]/).size == params[:new_room].length) == false) && params[:new_room] !=""
+    #   @error = "Please enter only numbers (0-9) and letters (a-z) in your room name."
+    #   erb :'projects/edit' #re-render form to show typed-in values. Flash messages don't seem to work with render.
+    # else
+
+    # end
   end
 
   get '/users/:user_slug/projects/:project_slug' do
