@@ -2,10 +2,15 @@
   <section class="clearfix">
     <h1>New Project</h1>
     
-    <%if @project%>
+    <%if @project && @project.errors.any?%>
       <div class="flash wrapper home-user-options clearfix">
-        <%=@project.errors.full_messages[0]%>
+        <%=@project.errors.full_messages.to_sentence%>
       </div>
+      <%if @project.room && @project.room.errors.any?%>
+        <div class="flash wrapper home-user-options clearfix">
+          <%=@project.room.errors.full_messages.to_sentence%>
+        </div>
+      <%end%>
     <%end%>
 
     <div class = "form clearfix">
@@ -13,7 +18,7 @@
         <table>
           <tr>
             <th>Project Name:</th>
-            <td><input type='text' name='name' value = <%=params[:name] if params[:name] !=nil%>></td>
+            <td><input type='text' name='name' value = <%=@project.name if @project%>></td>
             <td> </td> <td> </td>
             <td><input type='submit' value='Create Project' ></td>
           </tr>    

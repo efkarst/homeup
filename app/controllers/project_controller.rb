@@ -9,10 +9,18 @@ class ProjectController < ApplicationController
   end
 
   post '/projects' do
-      (!!params[:new_room] && params[:new_room] != "") ? room_name = params[:new_room] : room_name = params[:room] 
-      @room = current_user.rooms.find_or_create_by(name: room_name.downcase, user: current_user)
-      @project = Project.create(name: params[:name].downcase, description: params[:description], materials: params[:materials], room: @room, status: params[:status], cost: params[:cost], duration: params[:duration])
-      @project.errors.messages.any? ? (erb :'projects/new') : (redirect "/users/#{@project.user.slug}/projects/#{@project.slug}")
+      (!!params[:new_room] && params[:new_room] != "") ? room_name = params[:new_room] : room_name = params[:room] #create helper method
+      @room = current_user.rooms.find_or_create_by(name: room_name.downcase, user: current_user) if room_name
+      @project = Project.new(name: params[:name].downcase, description: params[:description], materials: params[:materials], room: @room, status: params[:status], cost: params[:cost], duration: params[:duration])
+      if @project.save
+        redirect "/users/#{@project.user.slug}/projects/#{@project.slug}"
+      else
+        erb :'projects/new'
+      end
+
+      #use flash messages for successful messages on redirect. you can use for errors
+
+      # @project.errors.messages.any? ? (erb :'projects/new') : (redirect "/users/#{@project.user.slug}/projects/#{@project.slug}")
 
     # if project_names.include?(params[:name]) == true
     #   @error = "Looks like you already have a project with that name. Pick another name."
