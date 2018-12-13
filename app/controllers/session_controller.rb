@@ -1,7 +1,7 @@
 class SessionController < ApplicationController
   get '/signup' do
     if logged_in?
-      redirect "/users/#{current_user.slug}"
+      redirect "/users/#{current_user.slug("username")}"
     else
       erb :'users/signup'
     end
@@ -9,7 +9,6 @@ class SessionController < ApplicationController
 
   post '/signup' do
     user = User.new(name: params[:name], username: params[:username], password: params[:password])
-
     User.all.each do |user|
       if user.username == params[:username]
         @exists = true
@@ -18,7 +17,7 @@ class SessionController < ApplicationController
         @exists = false
       end
     end
-
+    
     if @exists == true
       flash[:signup] = "Sorry, the username '#{params[:username]}' is taken! Try another username."
       redirect '/signup'

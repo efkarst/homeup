@@ -2,10 +2,9 @@
   <section class="clearfix">
     <h1>Edit <%=@project.name%></h1>
 
-    <%if !!session[:edit_project]%>
+    <%if @error%>
       <div class="flash wrapper home-user-options clearfix">
-        <%=session[:edit_project]%>
-        <%session.delete(:edit_project)%>
+        <%=@error%>
       </div>
     <%end%>
 

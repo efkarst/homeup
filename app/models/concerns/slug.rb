@@ -1,6 +1,7 @@
 module Slug
   module InstanceMethods
-    def slug
+    def slug(property)
+      binding.pry
       self.name.split(" ").join("-").downcase
     end
   end

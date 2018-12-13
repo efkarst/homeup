@@ -2,10 +2,9 @@
   <section class="clearfix">
     <h1>New Project</h1>
     
-    <%if !!session[:new_project]%>
+    <%if @error%>
       <div class="flash wrapper home-user-options clearfix">
-        <%=session[:new_project]%>
-        <%session.delete(:new_project)%>
+        <%=@error%>
       </div>
     <%end%>
 

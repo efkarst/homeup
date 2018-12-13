@@ -8,10 +8,9 @@
     </div>
     <%end%>
 
-    <%if !!session[:edit_room]%>
+    <%if @error%>
       <div class="flash wrapper home-user-options clearfix">
-        <%=session[:edit_room]%>
-        <%session.delete(:edit_room)%>
+        <%=@error%>
       </div>
     <%end%>
 

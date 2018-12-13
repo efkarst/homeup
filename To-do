@@ -1,10 +1,24 @@
+- validate project/room errors
+- refactor validations using Active Record Validations
 - bug where project name is shrinking to 1 word
 - refactor views
 - refactor controllers - use memoization where possible
 - write tests
 
 Questions
-- does total room cost belong in database, or just as a method?
 - nested paths -- what's the best convention?
+  - if you need to do crud within the nested urls, do that
+- where should signup / login controller actions go?
+
+- i have a gazillion validations - is this right? Should they live in the controller, or model methods is_valid_name?
+- modules exist in concerns folder?
+
+- active record validations -- check this out to replace if statements
+Acive Record Validations -- googls
+
 - can't get check logic to work
-- where should session / login controller actions go?
+- why can't i use flash with render
+
+
+sinatra is a light weight rake-based web app framework
+rack is a ruby gem that lets you build http requests usng ruby
