@@ -35,6 +35,10 @@ class ApplicationController < Sinatra::Base
         project.name
       end
     end
+
+    def room_name
+      (!!params[:new_room] && params[:new_room] != "") ? params[:new_room] : params[:room] #create helper method
+    end
   end
 
 end

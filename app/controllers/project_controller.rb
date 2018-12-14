@@ -9,41 +9,9 @@ class ProjectController < ApplicationController
   end
 
   post '/projects' do
-      (!!params[:new_room] && params[:new_room] != "") ? room_name = params[:new_room] : room_name = params[:room] #create helper method
-      @room = current_user.rooms.find_or_create_by(name: room_name.downcase, user: current_user) if room_name
-      @project = Project.new(name: params[:name].downcase, description: params[:description], materials: params[:materials], room: @room, status: params[:status], cost: params[:cost], duration: params[:duration])
-      if @project.save
-        redirect "/users/#{@project.user.slug}/projects/#{@project.slug}"
-      else
-        erb :'projects/new'
-      end
-
-      #use flash messages for successful messages on redirect. you can use for errors
-
-      # @project.errors.messages.any? ? (erb :'projects/new') : (redirect "/users/#{@project.user.slug}/projects/#{@project.slug}")
-
-    # if project_names.include?(params[:name]) == true
-    #   @error = "Looks like you already have a project with that name. Pick another name."
-    #   erb :'projects/new' #re-render form to show typed-in values. Flash messages don't seem to work with render.
-      
-    # elsif params[:new_room] == "" && params[:room] == nil
-    #   @error = "Please add or choose a room."
-    #   erb :'projects/new' #re-render form to show typed-in values. Flash messages don't seem to work with render.
-    # elsif ((params[:cost].scan(/[0-9]/).size == params[:cost].length) == false) && params[:cost] != ""
-    #   @error = "Please enter only number 0-9 for cost."
-    #   erb :'projects/new' #re-render form to show typed-in values. Flash messages don't seem to work with render.
-    # elsif ((params[:duration].scan(/[0-9]/).size == params[:duration].length) == false) && params[:cost] != ""
-    #   @error = "Please enter only number 0-9 for duration."
-    #   erb :'projects/new' #re-render form to show typed-in values. Flash messages don't seem to work with render.
-    # elsif (params[:name].scan(/[\d\sa-zA-Z]/).size == params[:name].length) == false
-    #   @error = "Please enter only numbers (0-9) and letters (a-z) in your project name."
-    #   erb :'projects/new' #re-render form to show typed-in values. Flash messages don't seem to work with render.
-    # elsif ((params[:new_room].scan(/[\d\sa-zA-Z]/).size == params[:new_room].length) == false) && params[:new_room] !=""
-    #   @error = "Please enter only numbers (0-9) and letters (a-z) in your room name."
-    #   erb :'projects/edit' #re-render form to show typed-in values. Flash messages don't seem to work with render.
-    # else
-
-    # end
+    @room = current_user.rooms.find_or_create_by(name: room_name.downcase, user: current_user) if room_name
+    @project = Project.new(name: params[:name].downcase, description: params[:description], materials: params[:materials], room: @room, status: params[:status], cost: params[:cost], duration: params[:duration])
+    @project.save ? (redirect "/users/#{@project.user.slug}/projects/#{@project.slug}") : (erb :'projects/new')
   end
 
   get '/users/:user_slug/projects/:project_slug' do
@@ -58,43 +26,14 @@ class ProjectController < ApplicationController
 
   patch '/users/:user_slug/projects/:project_slug' do
     @project = User.find_by_slug(params[:user_slug]).projects.find_by_slug(params[:project_slug])
-    (!!params[:new_room] && params[:new_room] != "") ? room_name = params[:new_room] : room_name = params[:room] 
-    room = @project.user.rooms.find_or_create_by(name: room_name.downcase, user: current_user)
+    @room = current_user.rooms.find_or_create_by(name: room_name.downcase, user: current_user) if room_name
     @project.room.destroy if @project.room.projects.size == 1 && @project.room.name != room_name
-    @project.update(name: params[:name].downcase, description: params[:description], materials: params[:materials], room: room, status: params[:status], cost: params[:cost], duration: params[:duration])
-    @project.save
-    @project.errors.messages.any? ? (erb :'projects/edit') : (redirect "/users/#{@project.user.slug}/projects/#{@project.slug}")
-    
-    
-    # if project_names.include?(params[:name]) == true && @project.name != params[:name]
-    #   @error = "Looks like you already have a project with that name. Pick another name."
-    #   erb :'projects/edit' #re-render form to show typed-in values. Flash messages don't seem to work with render.
-    # elsif params[:new_room] == "" && params[:room] == nil
-    #   @error = "Please add or choose a room."
-    #   erb :'projects/edit' #re-render form to show typed-in values. Flash messages don't seem to work with render.
-    # elsif ((params[:cost].scan(/[0-9]/).size == params[:cost].length) == false) && params[:cost] != ""
-    #   @error = "Please enter only number 0-9 for cost."
-    #   erb :'projects/edit' #re-render form to show typed-in values. Flash messages don't seem to work with render.
-    # elsif ((params[:duration].scan(/[0-9]/).size == params[:duration].length) == false) && params[:cost] != ""
-    #   @error = "Please enter only number 0-9 for duration."
-    #   erb :'projects/edit' #re-render form to show typed-in values. Flash messages don't seem to work with render.
-    # elsif (params[:name].scan(/[\d\sa-zA-Z]/).size == params[:name].length) == false
-    #   @error = "Please enter only numbers (0-9) and letters (a-z) in your project name."
-    #   erb :'projects/edit' #re-render form to show typed-in values. Flash messages don't seem to work with render.
-    # elsif ((params[:new_room].scan(/[\d\sa-zA-Z]/).size == params[:new_room].length) == false) && params[:new_room] !=""
-    #   @error = "Please enter only numbers (0-9) and letters (a-z) in your room name."
-    #   erb :'projects/edit' #re-render form to show typed-in values. Flash messages don't seem to work with render.
-    # else
-    #   @project = User.find_by_slug(params[:user_slug]).projects.find_by_slug(params[:project_slug])
-    #   (!!params[:new_room] && params[:new_room] != "") ? room_name = params[:new_room] : room_name = params[:room] 
-    #   room = @project.user.rooms.find_or_create_by(name: room_name.downcase, user: current_user)
-    #   @project.room.destroy if @project.room.projects.size == 1 && @project.room.name != room_name
-    #   @project.update(name: params[:name].downcase, description: params[:description], materials: params[:materials], room: room, status: params[:status], cost: params[:cost], duration: params[:duration])
-    #   @project.save
-  
-    #   redirect "/users/#{@project.user.slug}/projects/#{@project.slug}" 
-    # end
-    
+    if @project.update(name: params[:name].downcase, description: params[:description], materials: params[:materials], room: @room, status: params[:status], cost: params[:cost], duration: params[:duration])
+      # destroy_empty_rooms
+      redirect "/users/#{@project.user.slug}/projects/#{@project.slug}"
+    else
+      erb :'projects/new'
+    end
   end
   
   delete '/users/:user_slug/projects/:project_slug' do
