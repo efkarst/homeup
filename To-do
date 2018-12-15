@@ -8,6 +8,7 @@
 - refactor validations using Active Record Validations
 
 - refactor views
-- refactor controllers 
 
+
+- add comments
 - write tests
