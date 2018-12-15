@@ -30,12 +30,6 @@ class ApplicationController < Sinatra::Base
       current_user ||= User.find(session[:user_id])
     end
 
-    def project_names
-      names ||= Project.all.collect do |project|
-        project.name
-      end
-    end
-
     def room_name
       !!params[:new_room].blank? ? params[:room] : params[:new_room]
     end

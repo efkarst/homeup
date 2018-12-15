@@ -5,7 +5,7 @@ class Room < ActiveRecord::Base
   has_many :projects
   include ProjectStats
 
-  validates :name, presence: { message: "Looks like you already have a room with that name. Pick another name." }
+  validates :name, presence: true
   validates :name, format: { with: /\A[a-zA-Z\s\d]+\z/,
     message: "only allows letters, numbers, and spaces" }
   

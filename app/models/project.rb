@@ -3,27 +3,26 @@ class Project < ActiveRecord::Base
   has_one :user, through: :room
   belongs_to :shopping_list
 
-  validates :name, presence: true# { message: "Looks like you already have a project with that name. Pick another name." }
+  validates :name, presence: true
+  validate :name_is_unique_to_user
   validates :room, presence: true
-  validates :name, uniqueness: true
   validates_associated :room
-  validates :cost, numericality: {only_integer: true, allow_nil: true} #, :if => :cost.blank? != true
-  validates :duration, numericality: { only_integer: true}#, :if => :duration.blank? != true
+  validates :cost, numericality: {only_integer: true, allow_nil: true}
+  validates :duration, numericality: { only_integer: true, allow_nil: true}
   validates :name, format: { with: /\A[a-zA-Z\s\d]+\z/,
     message: "only allows letters, numbers, and spaces" }
 
-  # validate :name_is_bananas
+  def name_is_unique_to_user
+    if user_project_names.include?(self.name.downcase)
+      self.errors[:base] << "You already have a project named '#{self.name}'"
+    end
+  end
 
-  # def name_is_bananas
-  #   if self.name != "bananas" #name isn't bananas
-  #     self.errors[:name] << "must be bananas"
-  #     #add an error message to name
-  #   end
-  # end
-  # if not validating an attribute, use :base instead of name
-
-
-  #if there are a bunch of customer validations, build a class
+  def user_project_names
+    self.user.projects.all.collect do |project|
+      project.name
+    end
+  end
 
   def slug
     self.name.split(" ").join("-").downcase
