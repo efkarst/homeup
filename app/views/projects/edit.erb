@@ -19,21 +19,21 @@
           <table>
             <tr>
               <th>Project Name:</th>
-              <td><input type='text' name='name' value=<%= params[:name] == nil ? @project.name.capitalize : params[:name]%> ></td>
+              <td><input type='text' name='name' value='<%= params[:name] == nil ? @project.name.capitalize : params[:name]%>' ></td>
               <td> </td> <td> </td>
               <td><input type='submit' value='Update Project'></td>
             </tr> 
             <tr>
               <th>Cost ($):</th>
-              <td><input type='text' name='cost' value=<%=params[:cost] == nil ? @project.cost : params[:cost]%>></td>
+              <td><input type='text' name='cost' value='<%=params[:cost] == nil ? @project.cost : params[:cost]%>'></td>
             </tr> 
           <tr>
             <th>Duration (hr):</th>
-            <td><input type='text' name='duration' value=<%=params[:duration] == nil ? @project.duration : params[:duration]%>></td>
+            <td><input type='text' name='duration' value='<%=params[:duration] == nil ? @project.duration : params[:duration]%>'></td>
           </tr>  
           <tr>
             <th>Add to New Room:</th>
-            <td><input type='text' name='new_room' value=<%=params[:new_room] == nil ? "" : params[:new_room]%>></td>
+            <td><input type='text' name='new_room' value='<%=params[:new_room] == nil ? "" : params[:new_room]%>'></td>
           </tr>
           <tr>
             <th>Add to an existing room:</th>
