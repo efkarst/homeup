@@ -6,7 +6,10 @@ class User < ActiveRecord::Base
   has_many :projects, through: :rooms
   belongs_to :shopping_list
   include ProjectStats
-  
+
+  validates :name, :username, :password, presence: true
+  validates :username, format: { with: /\A[a-zA-Z\d]+\z/,
+    message: "only allows letters and numbers" }
   
   def slug
     self.username.split(" ").join("-").downcase

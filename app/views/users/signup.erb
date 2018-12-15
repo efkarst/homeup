@@ -9,9 +9,9 @@
       </div>
     </div>
 
-    <%if !!flash[:signup]%>
+    <%if @user && @user.errors.any?%>
       <div class="flash wrapper home-user-options clearfix">
-        <%=flash[:signup]%>
+        <%=@user.errors.full_messages.to_sentence%>
       </div>
     <%end%>
     

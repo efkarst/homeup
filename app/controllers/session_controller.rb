@@ -8,28 +8,13 @@ class SessionController < ApplicationController
   end
 
   post '/signup' do
-    user = User.new(name: params[:name], username: params[:username], password: params[:password])
-    User.all.each do |user|
-      if user.username == params[:username]
-        @exists = true
-        break
-      else
-        @exists = false
-      end
-    end
-    
-    if @exists == true
-      flash[:signup] = "Sorry, the username '#{params[:username]}' is taken! Try another username."
-      redirect '/signup'
-    elsif user.name == "" || user.username == "" || user.password == nil
-      flash[:signup] = "Make sure you add a name, username and password."
-      redirect '/signup'
-    elsif user.save
-      session[:user_id] = user.id
-      redirect "/users/#{user.slug}"
+    @user = User.new(name: params[:name], username: params[:username], password: params[:password])
+
+    if @user.save
+      session[:user_id] = @user.id
+      redirect "/users/#{@user.slug}"
     else
-      flash[:signup] = "Something went wrong. Please try again."
-      redirect '/signup'
+      erb :'users/signup'
     end
 
   end
@@ -44,6 +29,7 @@ class SessionController < ApplicationController
 
   post '/login' do 
     user = User.find_by(username: params[:username])
+
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       redirect "/users/#{user.slug}"
@@ -51,6 +37,7 @@ class SessionController < ApplicationController
       flash[:login] = "Incorrect username or password."
       redirect '/login'
     end
+    
   end
 
   get '/logout' do
