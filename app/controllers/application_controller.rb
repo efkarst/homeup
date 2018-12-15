@@ -39,7 +39,7 @@ class ApplicationController < Sinatra::Base
         room.destroy if room.projects.count == 0
       end
     end
-  end
 
+  end
 
 end
