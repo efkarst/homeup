@@ -9,74 +9,53 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
   </head>
   <body>
-      <% if !logged_in?%>
-        <div class="wrapper body-background clearfix centered">
-         <%= yield_content :main%>
-        </div>
-      <% elsif request.path_info.include?('edit') || request.path_info.include?('new') %>
-        <header class="clearfix">
-          <div class="clearfix">
-            <div id="header-background" class="header-background">
-            </div> <!-- #header-background -->
+    <% if !logged_in?%>
+    <!-- ********************************************  Login / Signup Layout  ******************************************** -->
+      <div class="wrapper body-background clearfix centered">
+        <%= yield_content :main%>
+      </div>
+    <!-- ********************************************  Core Page Layouts  ******************************************** -->\
+    <% else %>
+    <!-- *********************  Header  ********************* -->
+      <header class="clearfix">
+        <div class="clearfix">
+          <div id="header-background" class="header-background">
+          </div> <!-- #header-background -->
+          <div class="wrapper">
+            <div id="logo">
+              <img src='/images/homeUp-logo.png'>
+            </div> <!-- #logo -->
+          </div> <!-- .wrapper -->
+
+          <div id="navbar">
             <div class="wrapper">
-              <div id="logo">
-                <img src='/images/homeUp-logo.png'>
-              </div> <!-- #logo -->
+              <nav class="clearfix">
+                <a href="/users/<%=current_user.slug%>">My Home</a>
+                <a href="/users/<%=current_user.slug%>/projects/new">New Project</a>
+                <a href="/projects">Inspiration</a>
+              </nav>
             </div> <!-- .wrapper -->
+          </div> <!-- #navbar -->
 
-            <div id="navbar">
-              <div class="wrapper">
-                <nav class="clearfix">
-                  <a href="/users/<%=current_user.slug%>">My Home</a>
-                  <a href="/users/<%=current_user.slug%>/projects/new">New Project</a>
-                  <a href="/projects">Inspiration</a>
-                </nav>
-              </div> <!-- .wrapper -->
-            </div> <!-- #navbar -->
+          <div id="user">
+            <div class="wrapper">
+              <%=current_user.name%></br>
+              <a href='/logout' class="link">Logout</a>
+            </div> <!-- .wrapper -->
+          </div> <!-- .user -->
+        </div> <!-- .header-background -->
+      </header> <!-- header -->
+      
 
-            <div id="user">
-              <div class="wrapper">
-                <%=current_user.name%></br>
-                <a href='/logout' class="link">Logout</a>
-              </div>
-            </div>
-          </div> <!-- .header-background -->
-        </header>
-
+      <!-- *********************  Page body (unsplit)  ********************* -->
+      <%if request.path_info.include?('edit') || request.path_info.include?('new') %>
         <div class="wrapper body-background clearfix">
-         <%= yield_content :main%>
+          <%= yield_content :main%>
         </div>
+        
 
+      <!-- *********************  Page body (split - main + sidepanel)  ********************* -->
       <%else%>
-        <header class="clearfix">
-          <div class="clearfix">
-            <div id="header-background" class="header-background">
-            </div> <!-- #header-background -->
-            <div class="wrapper">
-              <div id="logo">
-                <img src='/images/homeUp-logo.png'>
-              </div> <!-- #logo -->
-            </div> <!-- .wrapper -->
-
-            <div id="navbar">
-              <div class="wrapper">
-                <nav class="clearfix">
-                  <a href="/users/<%=current_user.slug%>">My Home</a>
-                  <a href="/users/<%=current_user.slug%>/projects/new">New Project</a>
-                  <a href="/projects">Inspiration</a>
-                </nav>
-              </div> <!-- .wrapper -->
-            </div> <!-- #navbar -->
-
-            <div id="user">
-              <div class="wrapper">
-                <%=current_user.name%></br>
-                <a href='/logout' class="link">Logout</a>
-              </div>
-            </div>
-          </div> <!-- .header-background -->
-        </header>
-
         <div class="wrapper body-background clearfix" id="split-page-body">
           <div id="main">
             <%= yield_content :main%>
@@ -86,7 +65,9 @@
           </div>
         </div>
       <%end%>
+    <%end%>
 
+    <!-- ********************************************  Footer  ******************************************** -->
     <footer>
       <small>&copy; 2018 <strong>homeUp</strong></small>
     </footer>
