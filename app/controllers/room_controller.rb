@@ -6,7 +6,13 @@ class RoomController < ApplicationController
 
   get '/users/:user_slug/rooms/:room_slug/edit' do
     @room = User.find_by_slug(params[:user_slug]).rooms.find_by_slug(params[:room_slug])
-    erb :'rooms/edit'
+
+    if current_user == @room.user
+      erb :'rooms/edit'
+    else
+      redirect "/users/#{@room.user.slug}/projects/#{@room.slug}"
+    end
+    
   end
 
   patch '/users/:user_slug/rooms/:room_slug' do

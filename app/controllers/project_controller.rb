@@ -25,7 +25,11 @@ class ProjectController < ApplicationController
 
   get '/users/:user_slug/projects/:project_slug/edit' do
     @project = User.find_by_slug(params[:user_slug]).projects.find_by_slug(params[:project_slug])
-    (current_user == @project.user) ? (erb :'projects/edit') : (redirect "/users/#{@project.user.slug}/projects/#{@project.slug}")
+    if current_user == @project.user
+      erb :'projects/edit'
+    else
+      redirect "/users/#{@project.user.slug}/projects/#{@project.slug}"
+    end
   end
 
   patch '/users/:user_slug/projects/:project_slug' do
