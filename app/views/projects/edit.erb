@@ -1,4 +1,9 @@
 <%content_for :main do %>
+
+  <div id="subheader">
+    <h4><a href="/users/<%=@project.user.slug%>"><%=@project.user.name.capitalize%>'s Home</a> &nbsp;>&nbsp; <a href="/users/<%=@project.user.slug%>/rooms/<%=@project.room.slug%>"><%=@project.room.name.capitalize%></a> &nbsp;>&nbsp; <a href="/users/<%=@project.user.slug%>/projects/<%=@project.slug%>"><%=@project.name.capitalize%></a> &nbsp;>&nbsp; Edit Project</h4>
+  </div> <!--subheader-->
+
   <section class="clearfix">
     <h1>Edit <%=@project.name%></h1>
 
@@ -14,7 +19,7 @@
           <table>
             <tr>
               <th>Project Name:</th>
-              <td><input type='text' name='name' value=<%=params[:name] == nil ? @project.name : params[:name]%> ></td>
+              <td><input type='text' name='name' value=<%= params[:name] == nil ? @project.name : params[:name]%> ></td>
               <td> </td> <td> </td>
               <td><input type='submit' value='Update Project'></td>
             </tr> 
@@ -28,7 +33,7 @@
           </tr>  
           <tr>
             <th>Add to New Room:</th>
-            <td><input type='text' name='new_room' value=<%=params[:name] == nil ? "" : params[:name]%>></td>
+            <td><input type='text' name='new_room' value=<%=params[:new_room] == nil ? "" : params[:new_room]%>></td>
           </tr>
           <tr>
             <th>Add to an existing room:</th>

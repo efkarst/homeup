@@ -1,4 +1,5 @@
-- validate project/room errors
+-- bug where project name is shrinking to 1 word. also when i update room it shouldn't say name isn't unique if the name isnt' changed
+
 - refactor validations using Active Record Validations
 
     # if project_names.include?(params[:name]) == true && @project.name != params[:name]
@@ -33,7 +34,6 @@
   - when editing, it may be dangerous to destroy original room before project update is validated
   - /projects and /projects/new should be nested
   - name needs to onluy be unique for the user
-- bug where project name is shrinking to 1 word. also when i update room it shouldn't say name isn't unique if the name isnt' changed
 - refactor views
 - refactor controllers - use memoization where possible
 - write tests

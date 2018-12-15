@@ -1,4 +1,9 @@
 <%content_for :main do %>
+
+  <div id="subheader">
+    <h4><a href="/users/<%=current_user.slug%>"><%=current_user.name.capitalize%>'s Home</a>  &nbsp;>&nbsp; New Project</h4>
+  </div> <!--subheader-->
+
   <section class="clearfix">
     <h1>New Project</h1>
     
@@ -14,7 +19,7 @@
     <%end%>
 
     <div class = "form clearfix">
-      <form method='POST' action='/projects' id='new_project'>
+      <form method='POST' action='/users/<%=current_user.slug%>/projects' id='new_project'>
         <table>
           <tr>
             <th>Project Name:</th>
@@ -24,21 +29,21 @@
           </tr>    
           <tr>
             <th>Cost ($):</th>
-            <td><input type='text' name='cost' value = <%=params[:cost] if params[:cost] !=nil%>></td>
+            <td><input type='text' name='cost' value = <%=@project.cost if @project%>></td>
           </tr>
           <tr>
             <th>Duration (hr):</th>
-            <td><input type='text' name='duration' value = <%=params[:duration] if params[:duration] !=nil%>></td>
+            <td><input type='text' name='duration' value = <%=@project.duration if @project%>></td>
           </tr>  
           <%if current_user.rooms.empty? == true%>
             <tr>
               <th>Room:</th>
-              <td><input type='text' name='new_room' value = <%=params[:new_room] if params[:new_room] !=nil%>></td>
+              <td><input type='text' name='new_room' value = <%=@project.room.name if @project%>></td>
             </tr>
           <%else%>
             <tr>
               <th>Add to New Room:</th>
-              <td><input type='text' name='new_room' value = <%=params[:new_room] if params[:new_room] !=nil%>></td>
+              <td><input type='text' name='new_room' value = <%=@project.room.name if @project%>></td>
             </tr>
             <tr>
               <th>Add to an existing room:</th>
@@ -59,11 +64,11 @@
           </tr>
           <tr>
             <th>Notes:</th>
-            <td><textarea type='text' name='description' form='new_project'><%=params[:description] if params[:description] !=nil%></textarea></td>
+            <td><textarea type='text' name='description' form='new_project'><%=@project.description if @project%></textarea></td>
           </tr>
           <tr>
             <th>Materials:</th>
-            <td><textarea type='text' name='materials' form='new_project' ><%=params[:materials] if params[:materials] !=nil%></textarea></td>
+            <td><textarea type='text' name='materials' form='new_project' ><%=@project.materials if @project%></textarea></td>
           </tr>
         </table>
       </form>

@@ -4,11 +4,11 @@ class ProjectController < ApplicationController
     erb :'projects/index'
   end
 
-  get '/projects/new' do
+  get '/users/:user_slug/projects/new' do
     erb :'projects/new'
   end
 
-  post '/projects' do
+  post '/users/:user_slug/projects' do
     @room = current_user.rooms.find_or_create_by(name: room_name.downcase, user: current_user) if room_name
     @project = Project.new(name: params[:name].downcase, description: params[:description], materials: params[:materials], room: @room, status: params[:status], cost: params[:cost], duration: params[:duration])
     @project.save ? (redirect "/users/#{@project.user.slug}/projects/#{@project.slug}") : (erb :'projects/new')

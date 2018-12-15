@@ -37,7 +37,7 @@ class ApplicationController < Sinatra::Base
     end
 
     def room_name
-      (!!params[:new_room] && params[:new_room] != "") ? params[:new_room] : params[:room] #create helper method
+      !!params[:new_room].blank? ? params[:room] : params[:new_room]
     end
   end
 
