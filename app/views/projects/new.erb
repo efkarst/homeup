@@ -47,7 +47,7 @@
           <%else%>
             <tr>
               <th>Add to New Room:</th>
-              <td><input type='text' name='new_room' value ='<%=@project.room.name if @project%>'></td>
+              <td><input type='text' name='new_room' value ='<%=params[:new_room] if params[:new_room] != "" %>'></td>
             </tr>
             <tr>
               <th>Add to an existing room:</th>

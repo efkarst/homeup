@@ -31,7 +31,13 @@ class ApplicationController < Sinatra::Base
     end
 
     def room_name
-      !!params[:new_room].blank? ? params[:room] : params[:new_room]
+      if params[:new_room].blank? == false
+        params[:new_room]
+      elsif params[:room]
+        params[:room]
+      else
+        ""
+      end
     end
 
     def destroy_empty_rooms

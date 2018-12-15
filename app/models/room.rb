@@ -5,9 +5,9 @@ class Room < ActiveRecord::Base
   has_many :projects
   include ProjectStats
 
-  validates :name, presence: true
+  validates :name, presence: { message: "of room can't be blank" }
   validates :name, format: { with: /\A[a-zA-Z\s\d]+\z/,
-    message: "only allows letters, numbers, and spaces" }
+    message: "of room only allows letters, numbers, and spaces" }
   validate :name_is_unique_to_user
 
   def name_is_unique_to_user

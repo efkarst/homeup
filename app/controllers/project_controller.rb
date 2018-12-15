@@ -9,11 +9,11 @@ class ProjectController < ApplicationController
   end
 
   post '/users/:user_slug/projects' do
-    @room = current_user.rooms.find_or_create_by(name: room_name.downcase, user: current_user) if room_name
+    @room = current_user.rooms.find_or_create_by(name: room_name.downcase, user: current_user)
     @project = Project.new(name: params[:name].downcase, description: params[:description], materials: params[:materials], room: @room, status: params[:status], cost: params[:cost], duration: params[:duration])
     
-    if @room.save
-      @project.save ? (redirect "/users/#{@project.user.slug}/projects/#{@project.slug}") : (erb :'projects/new')
+    if @room.save && @project.save 
+      redirect "/users/#{@project.user.slug}/projects/#{@project.slug}"
     else
       erb :'projects/new'
     end
@@ -38,13 +38,13 @@ class ProjectController < ApplicationController
 
   patch '/users/:user_slug/projects/:project_slug' do
     @project = User.find_by_slug(params[:user_slug]).projects.find_by_slug(params[:project_slug])
-    @room = current_user.rooms.find_or_create_by(name: room_name.downcase, user: current_user) if room_name
+    @room = current_user.rooms.find_or_create_by(name: room_name.downcase, user: current_user)
 
-    if @project.update(name: params[:name].downcase, description: params[:description], materials: params[:materials], room: @room, status: params[:status], cost: params[:cost], duration: params[:duration])
+    if @room.save && @project.update(name: params[:name].downcase, description: params[:description], materials: params[:materials], room: @room, status: params[:status], cost: params[:cost], duration: params[:duration])
       destroy_empty_rooms
       redirect "/users/#{@project.user.slug}/projects/#{@project.slug}"
     else
-      erb :'projects/new'
+      erb :'projects/edit'
     end
     
   end
