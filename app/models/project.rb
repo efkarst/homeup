@@ -13,7 +13,7 @@ class Project < ActiveRecord::Base
     message: "only allows letters, numbers, and spaces" }
 
   def name_is_unique_to_user
-    if user_project_names.include?(self.name.downcase)
+    if user_project_names.include?(self.name.downcase) && Project.find_by_slug(self.slug).id != self.id
       self.errors[:base] << "You already have a project named '#{self.name}'"
     end
   end

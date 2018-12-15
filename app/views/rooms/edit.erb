@@ -2,15 +2,9 @@
   <section class="clearfix">
     <h1>Edit <%=@room.name.capitalize%></h1>
 
-    <%if !!flash[:room]%>
-    <div class="flash wrapper clearfix">
-      <%=flash[:room]%>
-    </div>
-    <%end%>
-
-    <%if @error%>
+    <%if @room && @room.errors.any?%>
       <div class="flash wrapper home-user-options clearfix">
-        <%=@error%>
+        <%=@room.errors.full_messages.to_sentence%>
       </div>
     <%end%>
 

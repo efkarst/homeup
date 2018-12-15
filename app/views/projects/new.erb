@@ -9,13 +9,14 @@
     
     <%if @project && @project.errors.any?%>
       <div class="flash wrapper home-user-options clearfix">
-        <%=@project.errors.full_messages.to_sentence%>
+        <%=@project.errors.full_messages.to_sentence%> </br>
       </div>
-      <%if @project.room && @project.room.errors.any?%>
-        <div class="flash wrapper home-user-options clearfix">
-          <%=@project.room.errors.full_messages.to_sentence%>
-        </div>
-      <%end%>
+    <%end%>
+
+    <%if @room && @room.errors.any?%>
+      <div class="flash wrapper home-user-options clearfix">
+        <%=@room.errors.full_messages.to_sentence%> </br>
+      </div>
     <%end%>
 
     <div class = "form clearfix">
