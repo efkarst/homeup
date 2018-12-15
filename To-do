@@ -1,5 +1,4 @@
-- new room field is populated intead of radio button when form needs to be resubmitted
-- can't get check logic to work
+- add checked logic to new project form
 - create class / module for slug & other similar methods in models
 
 - add comments

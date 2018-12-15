@@ -48,30 +48,16 @@
             <th>Add to an existing room:</th>
             <td>            
               <%current_user.rooms.each do |room|%>
-                <% if @project.room.name == room.name %>
-                  <input type='radio' name = 'room' value='<%=room.name%>' id='<%=room.name%>' checked><%=room.name.capitalize%> </br> 
-                <%else%>
-                  <input type='radio' name = 'room' value='<%=room.name%>' id='<%=room.name%>'><%=room.name.capitalize%> </br> 
-                <%end%>
+                <input type='radio' name = 'room' value='<%=room.name%>' id='<%=room.name%>' <%='checked' if @project.room.name == room.name%>><%=room.name.capitalize%> </br> 
               <%end%> </br>
             </td>
           </tr>
           <tr>
             <th>Project Status:</th>
             <td>
-              <%if @project.status == "Not started"%>
-                <input type = 'radio' name='status' value = 'Not started' id = 'Not started' checked>Not Started</br>
-                <input type = 'radio' name='status' value = 'In progress' id = 'In progress'>In Progress</br>
-                <input type = 'radio' name='status' value = 'Complete' id = 'Complete'>Complete</br>
-              <%elsif @project.status == "In progress"%>
-                <input type = 'radio' name='status' value = 'Not started' id = 'Not started'>Not Started</br>
-                <input type = 'radio' name='status' value = 'In progress' id = 'In progress' checked>In Progress</br>
-                <input type = 'radio' name='status' value = 'Complete' id = 'Complete'>Complete</br>
-              <%else%>
-                <input type = 'radio' name='status' value = 'Not started' id = 'Not started'>Not Started</br>
-                <input type = 'radio' name='status' value = 'In progress' id = 'In progress'>In Progress</br>
-                <input type = 'radio' name='status' value = 'Complete' id = 'Complete' checked>Complete</br>
-              <%end%>
+              <input type = 'radio' name='status' value = 'Not started' id = 'Not started' <%='checked' if @project.status == "Not started"%>>Not Started</br>
+              <input type = 'radio' name='status' value = 'In progress' id = 'In progress' <%='checked' if @project.status == "In progress"%>>In Progress</br>
+              <input type = 'radio' name='status' value = 'Complete' id = 'Complete' <%='checked' if @project.status == "Complete"%>>Complete</br>
             </td>
           </tr>
           <tr>
