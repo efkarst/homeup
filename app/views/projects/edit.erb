@@ -19,7 +19,7 @@
           <table>
             <tr>
               <th>Project Name:</th>
-              <td><input type='text' name='name' value=<%= params[:name] == nil ? @project.name : params[:name]%> ></td>
+              <td><input type='text' name='name' value=<%= params[:name] == nil ? @project.name.capitalize : params[:name]%> ></td>
               <td> </td> <td> </td>
               <td><input type='submit' value='Update Project'></td>
             </tr> 

@@ -39,6 +39,13 @@ class ApplicationController < Sinatra::Base
     def room_name
       !!params[:new_room].blank? ? params[:room] : params[:new_room]
     end
+
+    def destroy_empty_rooms
+      current_user.rooms.each do |room|
+        room.destroy if room.projects.count == 0
+      end
+    end
   end
+
 
 end
