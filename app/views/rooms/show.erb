@@ -1,11 +1,12 @@
 <%content_for :main do %>
 
+  <!-- *********************  Subheader  ********************* -->
   <div id="subheader">
     <h4><a href="/users/<%=@room.user.slug%>"><%=@room.user.name.capitalize%>'s Home</a> &nbsp;>&nbsp; <a href="/users/<%=@room.user.slug%>/rooms/<%=@room.slug%>"><%=@room.name.capitalize%></a></h4>
   </div> <!--subheader-->
 
-
   <section class = "clearfix"> 
+    <!-- *********************  Room Name with Edit & Delete Buttons  ********************* -->
     <div class='section-title'>
       <h1><%=@room.name.capitalize%></h1>
       <%if current_user == @room.user%>
@@ -15,14 +16,16 @@
           <input type='image' src="/images/delete-icon.png" alt = "Delete Project" class="fsSubmitButton">
         </form>
       <%end%>
-    </div>
+    </div> <!-- .section-title -->
 
+    <!-- *********************  List Incomplete Projects in Room  ********************* -->
     <div class="grid clearfix">
       <%@room.incomplete_projects.each do |project|%>
         <a href="/users/<%=project.user.slug%>/projects/<%=project.slug%>"><%=project.name.capitalize%></a>
       <%end%>
-    </div>
+    </div> <!-- .grid -->
 
+    <!-- *********************  List Complete Projects in Room  ********************* -->
     <%if @room.complete_projects.empty? == false%>
       <div class='section-title'>
         <h3>Completed</h3>
@@ -32,11 +35,12 @@
         <%@room.complete_projects.each do |project|%>
           <a href="/users/<%=project.user.slug%>/projects/<%=project.slug%>"><%=project.name.capitalize%></a>
         <%end%>
-      </div>
+      </div> <!-- .grid -->
     <%end%>
   </section>
 <%end%>
 
+<!-- *********************  Sidebar  ********************* -->
 <%content_for :sidebar do%>
   <section class='panel'>
     <div class='panel-item'>

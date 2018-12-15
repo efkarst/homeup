@@ -1,18 +1,21 @@
 <%content_for :main do %>
-
+  <!-- *********************  Subheader  ********************* -->
   <div id="subheader">
     <h4><a href="/users/<%=@project.user.slug%>"><%=@project.user.name.capitalize%>'s Home</a> &nbsp;>&nbsp; <a href="/users/<%=@project.user.slug%>/rooms/<%=@project.room.slug%>"><%=@project.room.name.capitalize%></a> &nbsp;>&nbsp; <a href="/users/<%=@project.user.slug%>/projects/<%=@project.slug%>"><%=@project.name.capitalize%></a> &nbsp;>&nbsp; Edit Project</h4>
   </div> <!--subheader-->
 
+  <!-- *********************  Title  ********************* -->
   <section class="clearfix">
     <h1>Edit <%=@project.name%></h1>
 
+    <!-- *********************  Errors  ********************* -->
     <%if @error%>
       <div class="flash wrapper home-user-options clearfix">
         <%=@error%>
       </div>
     <%end%>
 
+    <!-- *********************  Project Edit Form  ********************* -->
     <div class = "form clearfix">
       <form action="/users/<%=@project.user.slug%>/projects/<%=@project.slug%>" method="POST" id='edit_project'>
         <input id="hidden" type="hidden" name="_method" value="patch">  
@@ -76,11 +79,5 @@
         </table>
       </form>
     </div>
-  </section>
-<%end%>
-
-<%content_for :sidebar do%>
-  <section>
-    <h1>Sidebar</h1>
   </section>
 <%end%>

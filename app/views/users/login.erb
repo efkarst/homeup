@@ -1,20 +1,23 @@
 <%content_for :main do %>
   <div class = "clearfix"> 
+    <!-- *********************  Large Title & Logo  ********************* -->
     <div class="large-logo-title">
-      <div class="large-logo" class="clearfix">
+      <div class="large-logo clearfix">
         <img src='/images/homeUp-logo.png'>
-      </div>
+      </div>  <!--  .large-logo  -->
       <div class="clearfix">
         <h1 class="large-title" >homeUp Login</h1>
-      </div>
-    </div>
+      </div> <!--  .large-title  -->
+    </div> <!--  .large-logo-title  -->
 
+    <!-- *********************  Error Messages  ********************* -->
     <%if !!flash[:login]%>
       <div class="flash wrapper home-user-options clearfix">
         <%=flash[:login]%>
-      </div>
+      </div> <!-- flash -->
     <%end%>
 
+    <!-- *********************  Login Form  ********************* -->
     <div class = "details form clearfix">
       <form method='POST' action='/login'>
         <table>
@@ -32,6 +35,6 @@
           </tr>
         </table>
       </form>
-    </div>
-  </section>
+    </div> <!-- .details form -->
+  </div> <!-- .clearfix -->
 <%end%>

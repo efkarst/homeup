@@ -1,6 +1,9 @@
 <%content_for :main do %>
   <section class="clearfix">
+    <!-- *********************  Title  ********************* -->
     <h1>Completed Projects</h1>
+
+    <!-- *********************  List Projects  ********************* -->
     <div class = "grid clearfix">
       <%@projects.each do |project|%>
         <a href="/users/<%=project.user.slug%>/projects/<%=project.slug%>"><%=project.name.capitalize%></a></br></br>

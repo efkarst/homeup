@@ -1,7 +1,6 @@
 - update error messages
 - new room field is populated intead of radio button when form needs to be resubmitted
 - can't get check logic to work
-- refactor views
 - create class / module for slug & other similar methods in models
 
 

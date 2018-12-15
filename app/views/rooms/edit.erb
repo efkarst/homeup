@@ -1,13 +1,21 @@
 <%content_for :main do %>
+  <!-- *********************  Subheader  ********************* -->
+  <div id="subheader">
+    <h4><a href="/users/<%=@room.user.slug%>"><%=@room.user.name.capitalize%>'s Home</a> &nbsp;>&nbsp; <a href="/users/<%=@room.user.slug%>/rooms/<%=@room.slug%>"><%=@room.name.capitalize%></a> &nbsp;>&nbsp; Edit Room</h4>
+  </div> <!--subheader-->
+
   <section class="clearfix">
+    <!-- *********************  Title  ********************* -->
     <h1>Edit <%=@room.name.capitalize%></h1>
 
+    <!-- *********************  Errors  ********************* -->
     <%if @room && @room.errors.any?%>
       <div class="flash wrapper home-user-options clearfix">
         <%=@room.errors.full_messages.to_sentence%>
       </div>
     <%end%>
 
+    <!-- *********************  Edit Form  ********************* -->
     <div class = "form clearfix">
       <form action="/users/<%=@room.user.slug%>/rooms/<%=@room.slug%>" method="POST">
       <input id="hidden" type="hidden" name="_method" value="patch">
@@ -24,8 +32,3 @@
   </section>
 <%end%>
 
-<%content_for :sidebar do%>
-  <section>
-    <h1>Sidebar</h1>
-  </section>
-<%end%>

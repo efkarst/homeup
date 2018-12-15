@@ -1,32 +1,37 @@
 <%content_for :main do %>
 
+  <!-- *********************  Subheader  ********************* -->
   <div id="subheader">
     <h4><a href="/users/<%=@user.slug%>"><%=@user.name.capitalize%>'s Home</a></h4>
   </div> <!--subheader-->
 
+  <!-- *********************  Start new project if no projects  ********************* -->
   <%if @user.rooms.empty? == true && @user == current_user%>
     <section class = "clearfix"> 
       <h1>Start a New Project</h1>
       <div class="grid clearfix">
         <a class= "new-project" href="/users/<%=@user.slug%>/projects/new">Start New Project</a>
-      </div>
-    </section>
+      </div><!--grid-->
+    </section> <!--clearfix-->
+
+  <!-- *********************  Show user rooms and projects  ********************* -->
   <%else%>
     <%@user.rooms.each do |room|%>
       <section class = "clearfix"> 
-      <div class="section-title">
-      <a href = '/users/<%=@user.slug%>/rooms/<%=room.slug%>'><h1><%=room.name.capitalize%></h1></a>
-      </div> <!-- Section title-->
+        <div class="section-title">
+          <a href = '/users/<%=@user.slug%>/rooms/<%=room.slug%>'><h1><%=room.name.capitalize%></h1></a>
+        </div> <!-- .section-title-->
         <div class="grid clearfix">
           <%room.projects.each do |project|%>
             <a href="/users/<%=@user.slug%>/projects/<%=project.slug%>"><%=project.name.capitalize%></a>
           <%end%>
-        </div>
+        </div> <!--grid-->
       </section>
     <%end%>
   <%end%>
 <%end%>
 
+<!-- *********************  Sidebar  ********************* -->
 <%content_for :sidebar do%>
   <section class='panel'>
     <div class='panel-item'>
