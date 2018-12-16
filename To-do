@@ -1,4 +1,4 @@
-- create class / module for slug & other similar methods in models
+- if you renamea  room and get an error, all of the projects become a part of that room anyway
 - test: new project
 - test: edit project
 - 
