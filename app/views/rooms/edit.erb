@@ -1,7 +1,7 @@
 <%content_for :main do %>
   <!-- *********************  Subheader  ********************* -->
   <div id="subheader">
-    <h4><a href="/users/<%=@room.user.slug%>"><%=@room.user.name.capitalize%>'s Home</a> &nbsp;>&nbsp; <a href="/users/<%=@room.user.slug%>/rooms/<%=@room.slug%>"><%=@room.name.capitalize%></a> &nbsp;>&nbsp; Edit Room</h4>
+    <h4><a href="/users/<%=@room.user.slug(:username)%>"><%=@room.user.name.capitalize%>'s Home</a> &nbsp;>&nbsp; <a href="/users/<%=@room.user.slug(:username)%>/rooms/<%=@room.slug(:name)%>"><%=@room.name.capitalize%></a> &nbsp;>&nbsp; Edit Room</h4>
   </div> <!--subheader-->
 
   <section class="clearfix">
@@ -17,7 +17,7 @@
 
     <!-- *********************  Edit Form  ********************* -->
     <div class = "form clearfix">
-      <form action="/users/<%=@room.user.slug%>/rooms/<%=@room.slug%>" method="POST">
+      <form action="/users/<%=@room.user.slug(:username)%>/rooms/<%=@room.slug(:name)%>" method="POST">
       <input id="hidden" type="hidden" name="_method" value="patch">
         <table>
           <tr>

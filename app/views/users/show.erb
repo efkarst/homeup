@@ -2,7 +2,7 @@
 
   <!-- *********************  Subheader  ********************* -->
   <div id="subheader">
-    <h4><a href="/users/<%=@user.slug%>"><%=@user.name.capitalize%>'s Home</a></h4>
+    <h4><a href="/users/<%=@user.slug(:username)%>"><%=@user.name.capitalize%>'s Home</a></h4>
   </div> <!--subheader-->
 
   <!-- *********************  Start new project if no projects  ********************* -->
@@ -10,7 +10,7 @@
     <section class = "clearfix"> 
       <h1>Start a New Project</h1>
       <div class="grid clearfix">
-        <a class= "new-project" href="/users/<%=@user.slug%>/projects/new">Start New Project</a>
+        <a class= "new-project" href="/users/<%=@user.slug(:username)%>/projects/new">Start New Project</a>
       </div><!--grid-->
     </section> <!--clearfix-->
 
@@ -19,11 +19,11 @@
     <%@user.rooms.each do |room|%>
       <section class = "clearfix"> 
         <div class="section-title">
-          <a href = '/users/<%=@user.slug%>/rooms/<%=room.slug%>'><h1><%=room.name.capitalize%></h1></a>
+          <a href = '/users/<%=@user.slug(:username)%>/rooms/<%=room.slug(:name)%>'><h1><%=room.name.capitalize%></h1></a>
         </div> <!-- .section-title-->
         <div class="grid clearfix">
           <%room.projects.each do |project|%>
-            <a href="/users/<%=@user.slug%>/projects/<%=project.slug%>"><%=project.name.capitalize%></a>
+            <a href="/users/<%=@user.slug(:username)%>/projects/<%=project.slug(:name)%>"><%=project.name.capitalize%></a>
           <%end%>
         </div> <!--grid-->
       </section>

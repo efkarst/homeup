@@ -2,7 +2,7 @@
 
   <!-- *********************  Subheader  ********************* -->
   <div id="subheader">
-    <h4><a href="/users/<%=@room.user.slug%>"><%=@room.user.name.capitalize%>'s Home</a> &nbsp;>&nbsp; <a href="/users/<%=@room.user.slug%>/rooms/<%=@room.slug%>"><%=@room.name.capitalize%></a></h4>
+    <h4><a href="/users/<%=@room.user.slug(:username)%>"><%=@room.user.name.capitalize%>'s Home</a> &nbsp;>&nbsp; <a href="/users/<%=@room.user.slug(:username)%>/rooms/<%=@room.slug(:name)%>"><%=@room.name.capitalize%></a></h4>
   </div> <!--subheader-->
 
   <section class = "clearfix"> 
@@ -10,8 +10,8 @@
     <div class='section-title'>
       <h1><%=@room.name.capitalize%></h1>
       <%if current_user == @room.user%>
-        <a href='/users/<%=@room.user.slug%>/rooms/<%=@room.slug%>/edit'><img src='/images/edit-icon.png' alt="Edit Room"></a>
-        <form action="/users/<%=@room.user.slug%>/rooms/<%=@room.slug%>" method="POST">
+        <a href='/users/<%=@room.user.slug(:username)%>/rooms/<%=@room.slug(:name)%>/edit'><img src='/images/edit-icon.png' alt="Edit Room"></a>
+        <form action="/users/<%=@room.user.slug(:username)%>/rooms/<%=@room.slug(:name)%>" method="POST">
           <input id="hidden" type="hidden" name="_method" value="delete">  
           <input type='image' src="/images/delete-icon.png" alt = "Delete Project" class="fsSubmitButton">
         </form>
@@ -21,7 +21,7 @@
     <!-- *********************  List Incomplete Projects in Room  ********************* -->
     <div class="grid clearfix">
       <%@room.incomplete_projects.each do |project|%>
-        <a href="/users/<%=project.user.slug%>/projects/<%=project.slug%>"><%=project.name.capitalize%></a>
+        <a href="/users/<%=project.user.slug(:username)%>/projects/<%=project.slug(:name)%>"><%=project.name.capitalize%></a>
       <%end%>
     </div> <!-- .grid -->
 
@@ -33,7 +33,7 @@
 
       <div class="grid clearfix">
         <%@room.complete_projects.each do |project|%>
-          <a href="/users/<%=project.user.slug%>/projects/<%=project.slug%>"><%=project.name.capitalize%></a>
+          <a href="/users/<%=project.user.slug(:username)%>/projects/<%=project.slug(:name)%>"><%=project.name.capitalize%></a>
         <%end%>
       </div> <!-- .grid -->
     <%end%>

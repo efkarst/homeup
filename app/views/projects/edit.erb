@@ -1,7 +1,7 @@
 <%content_for :main do %>
   <!-- *********************  Subheader  ********************* -->
   <div id="subheader">
-    <h4><a href="/users/<%=@project.user.slug%>"><%=@project.user.name.capitalize%>'s Home</a> &nbsp;>&nbsp; <a href="/users/<%=@project.user.slug%>/rooms/<%=@project.room.slug%>"><%=@project.room.name.capitalize%></a> &nbsp;>&nbsp; <a href="/users/<%=@project.user.slug%>/projects/<%=@project.slug%>"><%=@project.name.capitalize%></a> &nbsp;>&nbsp; Edit Project</h4>
+    <h4><a href="/users/<%=@project.user.slug(:username)%>"><%=@project.user.name.capitalize%>'s Home</a> &nbsp;>&nbsp; <a href="/users/<%=@project.user.slug(:username)%>/rooms/<%=@project.room.slug(:name)%>"><%=@project.room.name.capitalize%></a> &nbsp;>&nbsp; <a href="/users/<%=@project.user.slug(:username)%>/projects/<%=@project.slug(:name)%>"><%=@project.name.capitalize%></a> &nbsp;>&nbsp; Edit Project</h4>
   </div> <!--subheader-->
 
   <!-- *********************  Title  ********************* -->
@@ -23,7 +23,7 @@
 
     <!-- *********************  Project Edit Form  ********************* -->
     <div class = "form clearfix">
-      <form action="/users/<%=@project.user.slug%>/projects/<%=@project.slug%>" method="POST" id='edit_project'>
+      <form action="/users/<%=@project.user.slug(:username)%>/projects/<%=@project.slug(:name)%>" method="POST" id='edit_project'>
         <input id="hidden" type="hidden" name="_method" value="patch">  
           <table>
             <tr>

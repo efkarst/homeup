@@ -30,8 +30,8 @@
           <div id="navbar">
             <div class="wrapper">
               <nav class="clearfix">
-                <a href="/users/<%=current_user.slug%>">My Home</a>
-                <a href="/users/<%=current_user.slug%>/projects/new">New Project</a>
+                <a href="/users/<%=current_user.slug(:username)%>">My Home</a>
+                <a href="/users/<%=current_user.slug(:username)%>/projects/new">New Project</a>
                 <a href="/projects">Inspiration</a>
               </nav>
             </div> <!-- .wrapper -->

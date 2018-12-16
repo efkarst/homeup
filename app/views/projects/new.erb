@@ -1,7 +1,7 @@
 <%content_for :main do %>
   <!-- *********************  Subheader  ********************* -->
   <div id="subheader">
-    <h4><a href="/users/<%=current_user.slug%>"><%=current_user.name.capitalize%>'s Home</a>  &nbsp;>&nbsp; New Project</h4>
+    <h4><a href="/users/<%=current_user.slug(:username)%>"><%=current_user.name.capitalize%>'s Home</a>  &nbsp;>&nbsp; New Project</h4>
   </div> <!--subheader-->
 
   <section class="clearfix">
@@ -23,7 +23,7 @@
 
     <!-- *********************  New Project Form  ********************* -->
     <div class = "form clearfix">
-      <form method='POST' action='/users/<%=current_user.slug%>/projects' id='new_project'>
+      <form method='POST' action='/users/<%=current_user.slug(:username)%>/projects' id='new_project'>
         <table>
           <tr>
             <th>Project Name:</th>

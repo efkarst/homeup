@@ -1,7 +1,11 @@
+require_relative './concerns/slug.rb'
+
 class Project < ActiveRecord::Base
   belongs_to :room
   has_one :user, through: :room
   belongs_to :shopping_list
+  include Slug::InstanceMethods
+  extend Slug::ClassMethods
 
   validates :name, presence: true
   validate :name_is_unique_to_user
@@ -13,7 +17,7 @@ class Project < ActiveRecord::Base
     message: "only allows letters, numbers, and spaces" }
 
   def name_is_unique_to_user
-    if user_project_names.include?(self.name.downcase) && Project.find_by_slug(self.slug).id != self.id
+    if user_project_names.include?(self.name.downcase) && User.find_by_slug(:username, self.user.slug(:username)).projects.find_by_slug(:name, self.slug(:name)).id != self.id
       self.errors[:base] << "You already have a project named '#{self.name}'"
     end
   end
@@ -24,13 +28,4 @@ class Project < ActiveRecord::Base
     end
   end
 
-  def slug
-    self.name.split(" ").join("-").downcase
-  end
-
-  def self.find_by_slug(slug)
-    self.find_by(name: slug.split("-").join(" "))
-  end
-
-  
 end

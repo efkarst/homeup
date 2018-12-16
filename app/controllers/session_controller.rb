@@ -32,7 +32,7 @@ class SessionController < ApplicationController
 
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect "/users/#{user.slug}"
+      redirect "/users/#{user.slug(:username)}"
     else
       flash[:login] = "Incorrect username or password."
       redirect '/login'

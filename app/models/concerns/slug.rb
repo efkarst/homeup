@@ -1,13 +1,12 @@
 module Slug
   module InstanceMethods
     def slug(property)
-      binding.pry
-      self.name.split(" ").join("-").downcase
+      self[property].split(" ").join("-").downcase
     end
   end
 
   module ClassMethods
-    def find_by_slug(slug, property)
+    def find_by_slug(property, slug)
       self.find_by({property => slug.split("-").join(" ")})
     end
   end

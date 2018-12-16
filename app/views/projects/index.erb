@@ -6,7 +6,7 @@
     <!-- *********************  List Projects  ********************* -->
     <div class = "grid clearfix">
       <%@projects.each do |project|%>
-        <a href="/users/<%=project.user.slug%>/projects/<%=project.slug%>"><%=project.name.capitalize%></a></br></br>
+        <a href="/users/<%=project.user.slug(:username)%>/projects/<%=project.slug(:name)%>"><%=project.name.capitalize%></a></br></br>
       <%end%>
     </div>
 <%end%>
