@@ -8,9 +8,9 @@ class Room < ActiveRecord::Base
   include ProjectStats
   include Slug::InstanceMethods
   extend Slug::ClassMethods
+
   include ActiveModel::Validations
   validates_with MyValidator
-
   validates :name, presence: true
   validates :name, format: { with: /\A[a-zA-Z\s\d]+\z/,
     message: "of room only allows letters, numbers, and spaces" }

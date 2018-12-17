@@ -7,9 +7,9 @@ class Project < ActiveRecord::Base
   
   include Slug::InstanceMethods
   extend Slug::ClassMethods
+
   include ActiveModel::Validations
   validates_with MyValidator
-
   validates :name, presence: true
   validates :room, presence: true
   validates_associated :room
