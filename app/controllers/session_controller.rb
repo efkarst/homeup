@@ -1,7 +1,7 @@
 class SessionController < ApplicationController
   get '/signup' do
     if logged_in?
-      redirect "/users/#{current_user.slug("username")}"
+      redirect "/users/#{current_user.slug(:username)}"
     else
       erb :'users/signup'
     end
@@ -12,7 +12,7 @@ class SessionController < ApplicationController
 
     if @user.save
       session[:user_id] = @user.id
-      redirect "/users/#{@user.slug}"
+      redirect "/users/#{@user.slug(:username)}"
     else
       erb :'users/signup'
     end
@@ -21,7 +21,7 @@ class SessionController < ApplicationController
 
   get '/login' do
     if logged_in?
-      redirect "/users/#{current_user.slug}"
+      redirect "/users/#{current_user.slug(:username)}"
     else
       erb :'users/login'
     end
