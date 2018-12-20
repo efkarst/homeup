@@ -45,14 +45,14 @@
   <section class='panel'>
     <div class='panel-item'>
       <h4>Projects Completed</h4>
-      <h3><%=@room.number_of_projects_completed%></h3></br>
+      <h3><%=@room.number_of_projects_completed%> / <%=@room.projects.size%></h3></br>
     </div>
     <div class='panel-item'>
-      <h4>Total Cost of Room</h4>
+      <h4>Cost of Remaining Projects in Room</h4>
       <h3>$<%=@room.total_cost_of_incomplete_projects%></h3></br>
     </div>
     <div class='panel-item'>
-      <h4>Time to Finish Room</h4>
+      <h4>Time to Finish Projects in Room</h4>
       <h3><%=@room.total_duration_of_incomplete_projects%> hours</h3></br>
     </div>
   </section>
