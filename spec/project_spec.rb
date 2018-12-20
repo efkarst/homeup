@@ -7,7 +7,7 @@ end
 describe 'projects' do
   before do
     user = User.create(name: "Fred", username:"fred0123", password: "password")
-    project = Project.create(name:"Channel board ceiling", room: Room.create(name: "Second bedroom", user: user), cost: 900, duration: 15)
+    project = Project.create(name:"channel board ceiling", room: Room.create(name: "Second bedroom", user: user), cost: 900, duration: 15)
     visit '/'
     click_link('Log In')
     fill_in("username", :with => "fred0123")
@@ -43,20 +43,20 @@ describe 'projects' do
     visit '/users/fred0123/projects/channel-board-ceiling/edit'
     expect(current_path).to eq('/users/fred0123/projects/channel-board-ceiling/edit')
     expect(page).to have_content("Edit channel board ceiling")
-    # fill_in("cost", :with => "1800")
-    # fill_in("duration", :with => "45")
-    # page.choose("In progress")
-    # fill_in("description", :with => "Add a description")
-    # fill_in("materials", :with => "Add materials")
-    # click_on('Update Project')
-    # expect(current_path).to eq('/users/fred0123/projects/channel-board-ceiling')
-    # expect(page).to have_content("Channel board ceiling")
-    # # expect(page).to have_content("$1800")
-    # # expect(page).to have_content("45 hours")
-    # expect(page).to have_content("Second bedroom")
-    # # expect(page).to have_content("In progress")
-    # expect(page).to have_content("Add a description")
-    # expect(page).to have_content("Add materials")
+    fill_in("cost", :with => "1800")
+    fill_in("duration", :with => "45")
+    page.choose("In progress")
+    fill_in("description", :with => "Add a description")
+    fill_in("materials", :with => "Add materials")
+    click_on('Update Project')
+    expect(current_path).to eq('/users/fred0123/projects/channel-board-ceiling')
+    expect(page).to have_content("Channel board ceiling")
+    expect(page).to have_content("$1800")
+    expect(page).to have_content("45 hours")
+    expect(page).to have_content("Second bedroom")
+    expect(page).to have_content("In progress")
+    expect(page).to have_content("Add a description")
+    expect(page).to have_content("Add materials")
   end
 end
 
