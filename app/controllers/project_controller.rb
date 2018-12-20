@@ -11,7 +11,7 @@ class ProjectController < ApplicationController
   post '/users/:user_slug/projects' do
     @room = current_user.rooms.find_or_create_by(name: room_name.downcase, user: current_user)
     @project = Project.new(name: params[:name].downcase, description: params[:description], materials: params[:materials], room: @room, status: params[:status], cost: params[:cost], duration: params[:duration])
-    
+
     if @room.save && @project.save 
       redirect "/users/#{@project.user.slug(:username)}/projects/#{@project.slug(:name)}"
     else

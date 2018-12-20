@@ -6,7 +6,6 @@ class User < ActiveRecord::Base
   
   has_many :rooms
   has_many :projects, through: :rooms
-  belongs_to :shopping_list
 
   include ProjectStats
   include Slug::InstanceMethods
