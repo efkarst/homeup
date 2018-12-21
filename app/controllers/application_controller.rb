@@ -2,15 +2,15 @@ require './config/environment'
 require 'sinatra/flash'
 require 'sinatra/content_for'
 
-class ApplicationController < Sinatra::Base
-  helpers Sinatra::ContentFor
-  register Sinatra::Flash
+class ApplicationController < Sinatra::Base 
+  helpers Sinatra::ContentFor # Enables use of multiple yield statements in layout
+  register Sinatra::Flash     # Enable flash messages for some errors
 
   configure do
     set :public_folder, 'public'
     set :views, 'app/views'
     enable :sessions
-    set :session_secret, "password_security" #need to change this?
+    set :session_secret, "password_security"
   end
 
   get "/" do
@@ -21,6 +21,7 @@ class ApplicationController < Sinatra::Base
     end
   end
 
+  # Helper methods to provide logic needed in views
   helpers do
     def logged_in?
       !!session[:user_id]

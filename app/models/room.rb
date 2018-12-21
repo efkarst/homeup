@@ -9,7 +9,6 @@ class Room < ActiveRecord::Base
   include Slug::InstanceMethods
   extend Slug::ClassMethods
 
-  include ActiveModel::Validations
   validates_with MyValidator
   validates :name, presence: true
   validates :name, format: { with: /\A[a-zA-Z\s\d]+\z/,
