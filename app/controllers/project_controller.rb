@@ -1,6 +1,6 @@
 class ProjectController < ApplicationController
   get '/projects' do
-    @projects = Project.all.where(status: "Complete")
+    @projects = Project.all
     erb :'projects/index'
   end
 
