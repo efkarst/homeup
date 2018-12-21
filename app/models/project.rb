@@ -19,4 +19,5 @@ class Project < ActiveRecord::Base
   validates :name, format: { with: /\A[a-zA-Z\s\d]+\z/,
     message: "only allows letters, numbers, and spaces" }
 
+
 end

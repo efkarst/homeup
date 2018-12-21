@@ -1,4 +1,8 @@
 class RoomController < ApplicationController
+  before do
+    redirect_if_not_logged_in
+  end
+  
   # Render view to show details on a specific room
   get '/users/:user_slug/rooms/:room_slug' do
     @room = User.find_by_slug(:username, params[:user_slug]).rooms.find_by_slug(:name, params[:room_slug])

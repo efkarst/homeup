@@ -1,5 +1,8 @@
 class ProjectController < ApplicationController
-  
+  before do
+    redirect_if_not_logged_in
+  end
+
   # Render all projects
   get '/projects' do
     @projects = Project.all

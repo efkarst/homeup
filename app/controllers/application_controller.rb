@@ -29,9 +29,16 @@ class ApplicationController < Sinatra::Base
       !!session[:user_id]
     end
 
+    # redirects to useful place if not logged in
+    def redirect_if_not_logged_in
+      if !logged_in?
+        redirect '/'
+      end
+    end
+
     # Return instance of user who is currently signed in
     def current_user
-      current_user ||= User.find(session[:user_id])
+      @current_user ||= User.find(session[:user_id])
     end
 
     # Return room name user submitted in form via either new_room field or rooms radio buttons

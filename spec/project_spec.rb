@@ -7,7 +7,7 @@ end
 describe 'projects' do
   before do
     user = User.create(name: "Fred", username:"fred0123", password: "password")
-    project = Project.create(name:"channel board ceiling", room: Room.create(name: "Second bedroom", user: user), cost: 900, duration: 15)
+    project = Project.create(name:"channel board ceiling", room: Room.create(name: "Second bedroom", user: user), user: user, cost: 900, duration: 15)
     visit '/'
     click_link('Log In')
     fill_in("username", :with => "fred0123")

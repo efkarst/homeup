@@ -1,6 +1,6 @@
 class MyValidator < ActiveModel::Validator
   def validate(record)
-    # Add an error if the name chosen is not unqie to the user
+    # Add an error if the name chosen is not unique to the user
     if user_already_has_item_with_name?(record) && user_item_is_not_current_item(record)
       record.errors[:base] << "You already have a #{record.class.name.downcase} named '#{record.name}'"
     end
