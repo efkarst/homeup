@@ -13,6 +13,7 @@ class ApplicationController < Sinatra::Base
     set :session_secret, "password_security"
   end
 
+  # Render index page, or user home page if they are already logged in
   get "/" do
     if logged_in?
       redirect "/users/#{current_user.slug(:username)}"
@@ -23,14 +24,17 @@ class ApplicationController < Sinatra::Base
 
   # Helper methods to provide logic needed in views
   helpers do
+    # Return true if user is logged in
     def logged_in?
       !!session[:user_id]
     end
 
+    # Return instance of user who is currently signed in
     def current_user
       current_user ||= User.find(session[:user_id])
     end
 
+    # Return room name user submitted in form via either new_room field or rooms radio buttons
     def room_name
       if params[:new_room].blank? == false
         params[:new_room]
@@ -41,6 +45,7 @@ class ApplicationController < Sinatra::Base
       end
     end
 
+    # Iterate through empy rooms and destroys those without projects
     def destroy_empty_rooms
       current_user.rooms.each do |room|
         room.destroy if room.projects.count == 0

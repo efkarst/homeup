@@ -1,13 +1,17 @@
 class ProjectController < ApplicationController
+  
+  # Render all projects
   get '/projects' do
     @projects = Project.all
     erb :'projects/index'
   end
 
+  # Render view with new project form for the current user
   get '/users/:user_slug/projects/new' do
     erb :'projects/new'
   end 
 
+  # Create project with data posted from 'new project' form and redirect to user home page if there aren't validation errors
   post '/users/:user_slug/projects' do
     @room = current_user.rooms.find_or_create_by(name: room_name.downcase, user: current_user)
     @project = Project.new(name: params[:name].downcase, description: params[:description], materials: params[:materials], room: @room, status: params[:status], cost: params[:cost], duration: params[:duration], user: current_user)
@@ -20,11 +24,13 @@ class ProjectController < ApplicationController
 
   end
 
+  # Render view to show details on a specific project
   get '/users/:user_slug/projects/:project_slug' do
     @project = User.find_by_slug(:username, params[:user_slug]).projects.find_by_slug(:name, params[:project_slug])
     erb :'projects/show'
   end
 
+  # Render view with edit form for a specific project if it belongs to the current user
   get '/users/:user_slug/projects/:project_slug/edit' do
     @project = User.find_by_slug(:username, params[:user_slug]).projects.find_by_slug(:name, params[:project_slug])
     
@@ -36,6 +42,7 @@ class ProjectController < ApplicationController
 
   end
 
+  # Update project with data posted from 'edit project' form and redirect user to project show page if there aren't validation errors
   patch '/users/:user_slug/projects/:project_slug' do
     project = User.find_by_slug(:username, params[:user_slug]).projects.find_by_slug(:name, params[:project_slug])
     @room = current_user.rooms.find_or_create_by(name: room_name.downcase, user: current_user)
@@ -51,6 +58,7 @@ class ProjectController < ApplicationController
     
   end
   
+  # Delete project if it belongs to the current user
   delete '/users/:user_slug/projects/:project_slug' do
     @project = User.find_by_slug(:username, params[:user_slug]).projects.find_by_slug(:name, params[:project_slug])
     

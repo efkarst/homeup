@@ -1,4 +1,5 @@
 class SessionController < ApplicationController
+  # Render view with signup form, or redirect to user show page if already logged in
   get '/signup' do
     if logged_in?
       redirect "/users/#{current_user.slug(:username)}"
@@ -7,6 +8,7 @@ class SessionController < ApplicationController
     end
   end
 
+  # Create user with data posted from 'signup' form and redirect to user home page if there aren't validation errors
   post '/signup' do
     @user = User.new(name: params[:name], username: params[:username], password: params[:password])
 
@@ -19,6 +21,7 @@ class SessionController < ApplicationController
 
   end
 
+  # Render view with login form, or redirect to user show page if already logged in
   get '/login' do
     if logged_in?
       redirect "/users/#{current_user.slug(:username)}"
@@ -27,6 +30,7 @@ class SessionController < ApplicationController
     end
   end
 
+  # Log user in and redirect to user show page if the user exists and authenticates
   post '/login' do 
     user = User.find_by(username: params[:username])
 
@@ -40,6 +44,7 @@ class SessionController < ApplicationController
     
   end
 
+  # Log current user out
   get '/logout' do
     session.clear
     redirect '/'

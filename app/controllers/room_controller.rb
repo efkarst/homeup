@@ -1,9 +1,11 @@
 class RoomController < ApplicationController
+  # Render view to show details on a specific room
   get '/users/:user_slug/rooms/:room_slug' do
     @room = User.find_by_slug(:username, params[:user_slug]).rooms.find_by_slug(:name, params[:room_slug])
     erb :'rooms/show'
   end
 
+  # Render view with edit form for a specific room if it belongs to the current user
   get '/users/:user_slug/rooms/:room_slug/edit' do
     @room = User.find_by_slug(:username, params[:user_slug]).rooms.find_by_slug(:name, params[:room_slug])
 
@@ -15,6 +17,7 @@ class RoomController < ApplicationController
     
   end
 
+  # Update room with data posted from 'edit room' form and redirect user to room show page if there aren't validation errors
   patch '/users/:user_slug/rooms/:room_slug' do
     room = User.find_by_slug(:username, params[:user_slug]).rooms.find_by_slug(:name, params[:room_slug])
 
@@ -28,6 +31,7 @@ class RoomController < ApplicationController
 
   end
 
+  # Delete room if it belongs to the current user
   delete '/users/:user_slug/rooms/:room_slug' do
     @room = User.find_by_slug(:username, params[:user_slug]).rooms.find_by_slug(:name, params[:room_slug])
 
