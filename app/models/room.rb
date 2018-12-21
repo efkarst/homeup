@@ -13,8 +13,8 @@ class Room < ActiveRecord::Base
 
   # Active Record Validations
   validates_with MyValidator
-  validates :name, presence: true
-  validates :name, format: { with: /\A[a-zA-Z\s\d]+\z/,
+  validates :name, presence: {message: "of room can't be blank"}
+   validates :name, format: { with: /\A[a-zA-Z\s\d]+\z/,
     message: "of room only allows letters, numbers, and spaces" }
   
 end
