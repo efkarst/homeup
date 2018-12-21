@@ -9,9 +9,9 @@
     <h1>Edit <%=@room.name.capitalize%></h1>
 
     <!-- *********************  Errors  ********************* -->
-    <%if @room && @room.errors.any?%>
+    <%if @errors && @errors.any?%>
       <div class="flash wrapper home-user-options clearfix">
-        <%=@room.errors.full_messages.to_sentence%>
+        <%=@errors.full_messages.to_sentence%>
       </div>
     <%end%>
 
@@ -22,7 +22,7 @@
         <table>
           <tr>
             <th>Room Name:</th>
-            <td><input type='text' name='name' value='<%=@room.name.capitalize%>'></td>
+            <td><input type='text' name='name' value='<%=params[:name] ? params[:name].capitalize : @room.name.capitalize%>'></td>
             <td> </td> <td> </td>
             <td><input type='submit' value='Update Room'></td>
           </tr>    

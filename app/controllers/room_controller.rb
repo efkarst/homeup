@@ -16,11 +16,13 @@ class RoomController < ApplicationController
   end
 
   patch '/users/:user_slug/rooms/:room_slug' do
-    @room = User.find_by_slug(:username, params[:user_slug]).rooms.find_by_slug(:name, params[:room_slug])
+    room = User.find_by_slug(:username, params[:user_slug]).rooms.find_by_slug(:name, params[:room_slug])
 
-    if @room.update(name: params[:name].downcase)
-      redirect "/users/#{@room.user.slug(:username)}/rooms/#{@room.slug(:name)}" 
+    if room.update(name: params[:name].downcase)
+      redirect "/users/#{room.user.slug(:username)}/rooms/#{room.slug(:name)}" 
     else
+      @errors = room.errors
+      @room = Room.find(room.id)
       erb :'rooms/edit'
     end
 
