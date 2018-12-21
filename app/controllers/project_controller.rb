@@ -37,13 +37,15 @@ class ProjectController < ApplicationController
   end
 
   patch '/users/:user_slug/projects/:project_slug' do
-    @project = User.find_by_slug(:username, params[:user_slug]).projects.find_by_slug(:name, params[:project_slug])
+    project = User.find_by_slug(:username, params[:user_slug]).projects.find_by_slug(:name, params[:project_slug])
     @room = current_user.rooms.find_or_create_by(name: room_name.downcase, user: current_user)
 
-    if @room.save && @project.update(name: params[:name].downcase, description: params[:description], materials: params[:materials], room: @room, status: params[:status], cost: params[:cost], duration: params[:duration], user: current_user)
+    if @room.save && project.update(name: params[:name].downcase, description: params[:description], materials: params[:materials], room: @room, status: params[:status], cost: params[:cost], duration: params[:duration], user: current_user)
       destroy_empty_rooms
-      redirect "/users/#{@project.user.slug(:username)}/projects/#{@project.slug(:name)}"
+      redirect "/users/#{project.user.slug(:username)}/projects/#{project.slug(:name)}"
     else
+      @errors = project.errors
+      @project = Project.find(project.id)
       erb :'projects/edit'
     end
     
