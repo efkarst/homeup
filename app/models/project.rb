@@ -1,12 +1,15 @@
 require_relative './concerns/slug.rb'
 
 class Project < ActiveRecord::Base
+  # Active Record Associations
   belongs_to :room
   belongs_to :user
   
+  # Include and extend methods from ProjectStats and Slug modules
   include Slug::InstanceMethods
   extend Slug::ClassMethods
 
+  # Active Record Validations
   validates_with MyValidator
   validates :name, presence: true
   validates :room, presence: true
