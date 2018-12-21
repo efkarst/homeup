@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   has_secure_password
   
   has_many :rooms
-  has_many :projects, through: :rooms
+  has_many :projects
 
   include ProjectStats
   include Slug::InstanceMethods
